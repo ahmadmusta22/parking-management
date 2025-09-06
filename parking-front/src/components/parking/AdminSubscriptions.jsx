@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { adminAPI, masterAPI } from '../../services/api';
+import { useQuery } from '@tanstack/react-query';
+import { masterAPI } from '../../services/api';
 import useToast from '../../hooks/useToast';
 
 const AdminSubscriptions = () => {
-  const [error, setError] = useState('');
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [formData, setFormData] = useState({
     userName: '',
@@ -13,7 +12,6 @@ const AdminSubscriptions = () => {
     startsAt: '',
     expiresAt: ''
   });
-  const queryClient = useQueryClient();
   const toast = useToast();
 
   // Fetch categories for reference

@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { adminAPI } from '../../services/api';
 import useToast from '../../hooks/useToast';
 
 const AdminEmployees = () => {
@@ -12,7 +10,6 @@ const AdminEmployees = () => {
     name: '',
     shift: ''
   });
-  const queryClient = useQueryClient();
   const toast = useToast();
 
   // Static user data (from seed data)
