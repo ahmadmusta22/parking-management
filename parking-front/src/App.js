@@ -4,6 +4,11 @@ import { useEffect } from 'react';
 import useAuthStore from './store/authStore';
 import OfflineIndicator from './components/OfflineIndicator';
 import { initializePerformanceMonitoring } from './utils/performance';
+import { initializeAccessibility } from './utils/accessibility';
+import { initializeAllCompatibility } from './utils/browserCompatibility';
+import { initializePWA } from './utils/pwa';
+import { initializeSEO } from './utils/seo';
+import { initializeErrorTracking, ErrorBoundary } from './utils/errorTracking';
 import HomePageOne from "./pages/HomePageOne";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
 import AnimatedScrollToTop from "./components/AnimatedScrollToTop";
@@ -36,19 +41,28 @@ function App() {
     initializeAuth();
   }, [initializeAuth]);
 
-  // Initialize performance monitoring
+  // Initialize all advanced features
   useEffect(() => {
+    // Initialize core features
     initializePerformanceMonitoring();
+    initializeAccessibility();
+    initializeAllCompatibility();
+    initializeSEO();
+    initializeErrorTracking();
+    
+    // Initialize PWA features
+    initializePWA();
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <OfflineIndicator />
-        <RouteScrollToTop />
-        <AnimatedScrollToTop />
-        <ToastProvider />
-        <Routes>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <OfflineIndicator />
+          <RouteScrollToTop />
+          <AnimatedScrollToTop />
+          <ToastProvider />
+          <Routes>
           {/* Main Landing Page */}
           <Route exact path="/" element={<HomePageOne />} />
           
@@ -65,9 +79,10 @@ function App() {
               <AdminPage />
             </ProtectedAdminRoute>
           } />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
