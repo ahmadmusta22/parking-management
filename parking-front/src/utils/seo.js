@@ -320,7 +320,7 @@ export const analytics = {
       
       // Initialize GA4
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){window.dataLayer.push(arguments);}
       window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', measurementId);
@@ -330,7 +330,7 @@ export const analytics = {
   // Track page views
   trackPageView: (pagePath, pageTitle) => {
     if (window.gtag) {
-      gtag('config', 'GA_MEASUREMENT_ID', {
+      window.gtag('config', 'GA_MEASUREMENT_ID', {
         page_path: pagePath,
         page_title: pageTitle
       });
@@ -340,7 +340,7 @@ export const analytics = {
   // Track events
   trackEvent: (eventName, parameters = {}) => {
     if (window.gtag) {
-      gtag('event', eventName, parameters);
+      window.gtag('event', eventName, parameters);
     }
   }
 };

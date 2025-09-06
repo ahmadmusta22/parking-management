@@ -2,6 +2,8 @@
  * Production debugging and error tracking utilities
  */
 
+import React from 'react';
+
 // Error types
 export const ERROR_TYPES = {
   JAVASCRIPT: 'javascript',
