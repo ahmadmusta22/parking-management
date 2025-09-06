@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 
 const CounterOne = () => {
   return (
-    <div className="counter-area-1 space-bottom">
+    <div className="counter-area-1 space-bottom" style={{ marginTop: '60px' }}>
       <div className="container">
         <div className="counter-wrap1">
           <div className="row gx-0 align-items-center">
@@ -19,8 +19,7 @@ const CounterOne = () => {
                             {({ isVisible }) =>
                               isVisible && (
                                 <span className="counter-number">
-                                  <CountUp delay={0} start={0} end={2} />
-                                  k+
+                                  <CountUp delay={0} start={0} end={9} />
                                 </span>
                               )
                             }
@@ -44,8 +43,8 @@ const CounterOne = () => {
                             {({ isVisible }) =>
                               isVisible && (
                                 <span className="counter-number">
-                                  <CountUp delay={0} start={0} end={8} />
-                                  k+
+                                  <CountUp delay={0} start={0} end={250} />
+                                  +
                                 </span>
                               )
                             }
@@ -69,8 +68,7 @@ const CounterOne = () => {
                             {({ isVisible }) =>
                               isVisible && (
                                 <span className="counter-number">
-                                  <CountUp delay={0} start={0} end={200} />
-                                  k+
+                                  <CountUp delay={0} start={0} end={580} />
                                 </span>
                               )
                             }
@@ -94,8 +92,7 @@ const CounterOne = () => {
                             {({ isVisible }) =>
                               isVisible && (
                                 <span className="counter-number">
-                                  <CountUp delay={0} start={0} end={9} />
-                                  k+
+                                  <CountUp delay={0} start={0} end={6} />
                                 </span>
                               )
                             }
