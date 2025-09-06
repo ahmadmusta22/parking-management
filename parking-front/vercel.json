@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "parking-front/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
@@ -12,13 +12,10 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/parking-front/$1"
+      "dest": "/$1"
     }
   ],
   "env": {
     "REACT_APP_API_URL": "@react_app_api_url"
-  },
-  "buildCommand": "cd parking-front && npm run build",
-  "outputDirectory": "parking-front/build",
-  "installCommand": "cd parking-front && npm install"
+  }
 }

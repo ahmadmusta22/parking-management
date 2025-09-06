@@ -7,6 +7,8 @@ This guide will help you deploy your parking management system with frontend and
 
 ### Frontend (Vercel) + Backend (Railway)
 
+> **Note**: Your project is a monorepo (both frontend and backend in same repository). This guide shows how to deploy only the frontend part to Vercel.
+
 ---
 
 ## 📱 **Step 1: Deploy Frontend to Vercel**
@@ -17,12 +19,17 @@ This guide will help you deploy your parking management system with frontend and
 3. Click "New Project"
 4. Import your repository: `ahmadmusta22/parking-management-frontend`
 
-### 1.2 Configure Build Settings
+### 1.2 Configure Build Settings (Monorepo)
 - **Framework Preset**: Create React App
-- **Root Directory**: `parking-front`
+- **Root Directory**: `parking-front` ← **IMPORTANT: Set this to frontend folder**
 - **Build Command**: `npm run build`
 - **Output Directory**: `build`
 - **Install Command**: `npm install`
+
+**Alternative Method**: If you can't set root directory in UI:
+- **Build Command**: `cd parking-front && npm run build`
+- **Output Directory**: `parking-front/build`
+- **Install Command**: `cd parking-front && npm install`
 
 ### 1.3 Environment Variables
 Add these environment variables in Vercel:
