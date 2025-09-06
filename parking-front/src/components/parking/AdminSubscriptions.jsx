@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { masterAPI } from '../../services/api';
+import { masterAPI, adminAPI } from '../../services/api';
 import useToast from '../../hooks/useToast';
 
 const AdminSubscriptions = () => {
@@ -146,9 +146,9 @@ const AdminSubscriptions = () => {
         </button>
       </div>
 
-      {error && (
+      {fetchError && (
         <div className="alert alert-danger" role="alert">
-          {error}
+          Failed to load subscriptions: {fetchError.message}
         </div>
       )}
 
