@@ -173,6 +173,11 @@ class ErrorTracker {
 // Create global error tracker instance
 export const errorTracker = new ErrorTracker();
 
+// Make errorTracker globally available for debug panel
+if (typeof window !== 'undefined') {
+  window.errorTracker = errorTracker;
+}
+
 // Global error handler
 export const setupGlobalErrorHandling = () => {
   // JavaScript errors
@@ -392,8 +397,17 @@ export const debugUtils = {
           <div style="font-size: 10px; color: #ccc;">${new Date(error.timestamp).toLocaleTimeString()}</div>
         </div>
       `).join('')}
-      <button onclick="errorTracker.clearErrors()" style="margin-top: 10px; padding: 5px;">Clear Errors</button>
+      <button id="clear-errors-btn" style="margin-top: 10px; padding: 5px;">Clear Errors</button>
     `;
+    
+    // Add event listener for clear button
+    const clearBtn = panel.querySelector('#clear-errors-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        errorTracker.clearErrors();
+        debugUtils.updateDebugPanel(panel);
+      });
+    }
   }
 };
 
