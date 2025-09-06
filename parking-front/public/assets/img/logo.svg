@@ -1,0 +1,18 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- WeLink CARGO Parking Logo - Clean Version -->
+  <rect width="200" height="60" fill="transparent"/>
+  
+  <!-- WeLink CARGO Symbol (Red flowing shape) -->
+  <g transform="translate(10, 10)">
+    <path d="M0,20 Q12,5 25,20 Q38,35 25,20 Q12,5 0,20" fill="#E8092E" stroke="#1B1F28" stroke-width="1"/>
+  </g>
+  
+  <!-- WeLink Text -->
+  <text x="50" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1B1F28">WeLink</text>
+  
+  <!-- CARGO Text -->
+  <text x="50" y="42" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1B1F28">CARGO</text>
+  
+  <!-- Parking Tagline -->
+  <text x="50" y="55" font-family="Arial, sans-serif" font-size="9" font-weight="400" fill="#1B1F28">SMART PARKING SOLUTIONS</text>
+</svg>

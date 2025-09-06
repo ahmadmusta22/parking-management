@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- WeLink CARGO Favicon -->
+  <rect width="32" height="32" fill="#1B1F28" rx="4"/>
+  
+  <!-- Truck Icon -->
+  <g transform="translate(4, 8)">
+    <!-- Truck Body -->
+    <rect x="0" y="8" width="12" height="6" fill="#E8092E" rx="1"/>
+    <!-- Truck Cab -->
+    <rect x="10" y="6" width="6" height="8" fill="#E8092E" rx="1"/>
+    <!-- Wheels -->
+    <circle cx="3" cy="16" r="2" fill="#FFFFFF"/>
+    <circle cx="13" cy="16" r="2" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- W Text -->
+  <text x="20" y="20" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#E8092E">W</text>
+</svg>
+
+
+
+
+
