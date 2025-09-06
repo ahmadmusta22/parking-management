@@ -2,37 +2,72 @@ import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/v1';
 
-// Create axios instance
+// Create axios instance with security configurations
 const api = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 10000, // 10 second timeout
   headers: {
     'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
   },
+  withCredentials: false, // Disable credentials for security
 });
 
-// Request interceptor to add auth token
+// Request interceptor to add auth token and security headers
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('authToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    
+    // Add security headers
+    config.headers['X-Requested-With'] = 'XMLHttpRequest';
+    config.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+    config.headers['Pragma'] = 'no-cache';
+    config.headers['Expires'] = '0';
+    
+    // Add request timestamp for security
+    config.headers['X-Request-Time'] = Date.now().toString();
+    
     return config;
   },
   (error) => {
+    console.error('Request interceptor error:', error);
     return Promise.reject(error);
   }
 );
 
-// Response interceptor for error handling
+// Response interceptor for error handling and security
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Log successful responses for monitoring
+    console.log(`API Success: ${response.config.method?.toUpperCase()} ${response.config.url}`);
+    return response;
+  },
   (error) => {
+    // Enhanced error handling with security considerations
+    console.error('API Error:', {
+      status: error.response?.status,
+      url: error.config?.url,
+      method: error.config?.method,
+      message: error.message
+    });
+
     if (error.response?.status === 401) {
+      // Clear sensitive data
       localStorage.removeItem('authToken');
       localStorage.removeItem('user');
-      window.location.href = '/login';
+      sessionStorage.clear();
+      
+      // Redirect to login with security
+      window.location.replace('/login');
+    } else if (error.response?.status === 403) {
+      console.warn('Access forbidden - insufficient permissions');
+    } else if (error.response?.status >= 500) {
+      console.error('Server error - please try again later');
     }
+    
     return Promise.reject(error);
   }
 );

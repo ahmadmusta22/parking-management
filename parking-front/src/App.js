@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import useAuthStore from './store/authStore';
 import OfflineIndicator from './components/OfflineIndicator';
+import { initializePerformanceMonitoring } from './utils/performance';
 import HomePageOne from "./pages/HomePageOne";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
 import AnimatedScrollToTop from "./components/AnimatedScrollToTop";
@@ -34,6 +35,11 @@ function App() {
   useEffect(() => {
     initializeAuth();
   }, [initializeAuth]);
+
+  // Initialize performance monitoring
+  useEffect(() => {
+    initializePerformanceMonitoring();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
