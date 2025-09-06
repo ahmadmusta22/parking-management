@@ -32,10 +32,17 @@ This guide will help you deploy your parking management system with frontend and
 - **Install Command**: `cd parking-front && npm install`
 
 ### 1.3 Environment Variables
-Add these environment variables in Vercel:
-```
-REACT_APP_API_URL=https://your-backend-url.railway.app/api/v1
-```
+**IMPORTANT**: Set environment variables in Vercel Dashboard, NOT in vercel.json
+
+1. Go to your Vercel project dashboard
+2. Click on "Settings" tab
+3. Click on "Environment Variables"
+4. Add new variable:
+   - **Name**: `REACT_APP_API_URL`
+   - **Value**: `https://your-backend-url.railway.app/api/v1`
+   - **Environment**: Production, Preview, Development (select all)
+
+**Note**: Replace `your-backend-url.railway.app` with your actual Railway backend URL
 
 ### 1.4 Deploy
 Click "Deploy" and wait for the build to complete.
@@ -148,6 +155,8 @@ app.use(cors({
 - Make sure to redeploy after adding environment variables
 - Check variable names match exactly (case-sensitive)
 - Verify the variables are set in the correct environment (production)
+- **Don't use `@secret_name` syntax** - set variables directly in Vercel dashboard
+- If you see "references Secret which does not exist" error, remove the env section from vercel.json
 
 ### API Connection Issues
 - Check that your backend URL is correct

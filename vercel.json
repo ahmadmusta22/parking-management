@@ -15,9 +15,6 @@
       "dest": "/parking-front/$1"
     }
   ],
-  "env": {
-    "REACT_APP_API_URL": "@react_app_api_url"
-  },
   "buildCommand": "cd parking-front && npm run build",
   "outputDirectory": "parking-front/build",
   "installCommand": "cd parking-front && npm install"
