@@ -237,7 +237,7 @@ const HeaderOne = () => {
                       </div>
                     ) : (
                       <div className="navbar-right-desc">
-                        <img src="/assets/img/icon/chat.svg" alt="Fixturbo" />
+                        <img src="/assets/img/icon/chat.svg" alt="Chat Support" />
                         <div className="navbar-right-desc-details">
                           <h6 className="title">Parking Support?</h6>
                           <Link className="link" to="tel:+1234567890">

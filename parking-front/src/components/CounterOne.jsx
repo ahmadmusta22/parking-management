@@ -30,7 +30,7 @@ const CounterOne = () => {
                       <div className="counter-card_icon">
                         <img
                           src="assets/img/icon/counter-icon_1-1.svg"
-                          alt="Fixturbo"
+                          alt="Parking Zones Icon"
                         />
                       </div>
                     </div>
@@ -55,7 +55,7 @@ const CounterOne = () => {
                       <div className="counter-card_icon">
                         <img
                           src="assets/img/icon/counter-icon_1-2.svg"
-                          alt="Fixturbo"
+                          alt="Parking Zones Icon"
                         />
                       </div>
                     </div>
@@ -79,7 +79,7 @@ const CounterOne = () => {
                       <div className="counter-card_icon">
                         <img
                           src="assets/img/icon/counter-icon_1-3.svg"
-                          alt="Fixturbo"
+                          alt="Parking Zones Icon"
                         />
                       </div>
                     </div>
@@ -103,7 +103,7 @@ const CounterOne = () => {
                       <div className="counter-card_icon">
                         <img
                           src="assets/img/icon/counter-icon_1-4.svg"
-                          alt="Fixturbo"
+                          alt="Parking Zones Icon"
                         />
                       </div>
                     </div>
@@ -137,7 +137,7 @@ const CounterOne = () => {
                 </div>
                 <div className="call-media-wrap">
                   <div className="icon">
-                    <img src="assets/img/icon/phone-1.svg" alt="Fixturbo" />
+                    <img src="assets/img/icon/phone-1.svg" alt="Phone Support Icon" />
                   </div>
                   <div className="media-body">
                     <h6 className="title text-white">Parking Support:</h6>

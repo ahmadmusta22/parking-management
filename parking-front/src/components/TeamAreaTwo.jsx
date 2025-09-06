@@ -71,7 +71,7 @@ const TeamAreaTwo = () => {
                 <SwiperSlide>
                   <div className="team-card style2">
                     <div className="team-card_img">
-                      <img src="assets/img/team/21th.jpg" alt="Fixturbo" />
+                      <img src="assets/img/team/21th.jpg" alt="Team Member" />
                     </div>
                     <div className="team-card_content">
                       <h4 className="team-card_title">
@@ -102,7 +102,7 @@ const TeamAreaTwo = () => {
                 <SwiperSlide>
                   <div className="team-card style2">
                     <div className="team-card_img">
-                      <img src="assets/img/team/21th.jpg" alt="Fixturbo" />
+                      <img src="assets/img/team/21th.jpg" alt="Team Member" />
                     </div>
                     <div className="team-card_content">
                       <h4 className="team-card_title">
@@ -131,7 +131,7 @@ const TeamAreaTwo = () => {
                 <SwiperSlide>
                   <div className="team-card style2">
                     <div className="team-card_img">
-                      <img src="assets/img/team/21th.jpg" alt="Fixturbo" />
+                      <img src="assets/img/team/21th.jpg" alt="Team Member" />
                     </div>
                     <div className="team-card_content">
                       <h4 className="team-card_title">
@@ -162,7 +162,7 @@ const TeamAreaTwo = () => {
                 <SwiperSlide>
                   <div className="team-card style2">
                     <div className="team-card_img">
-                      <img src="assets/img/team/21th.jpg" alt="Fixturbo" />
+                      <img src="assets/img/team/21th.jpg" alt="Team Member" />
                     </div>
                     <div className="team-card_content">
                       <h4 className="team-card_title">

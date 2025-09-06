@@ -99,7 +99,7 @@ const ContactAreaOnly = () => {
                 <div className="about-counter-grid jump">
                   <img
                     src="assets/img/icon/faq2-counter-icon-1.svg"
-                    alt="Fixturbo"
+                    alt="Contact Information"
                   />
                   <div className="media-right">
                     <h3 className="about-counter">
@@ -108,7 +108,7 @@ const ContactAreaOnly = () => {
                     <h4 className="about-counter-text">Parking Spaces Managed</h4>
                   </div>
                 </div>
-                <img src="assets/img/normal/faq-thumb-2-1.png" alt="Fixturbo" />
+                <img src="assets/img/normal/23th.png" alt="Contact Us" />
               </div>
             </div>
             <div className="col-lg-6">

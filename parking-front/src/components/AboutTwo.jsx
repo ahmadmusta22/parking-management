@@ -9,13 +9,13 @@ const AboutTwo = () => {
           <div className="col-xxl-7 col-xl-6">
             <div className="about-thumb2 mb-40 mb-xl-0">
               <div className="about-img-1">
-                <img src="assets/img/normal/15th.jpg" alt="Fixturbo" />
+                <img src="assets/img/normal/15th.jpg" alt="Parking Management System" />
               </div>
               <div className="about-img-2">
-                <img src="assets/img/normal/16th.jpg" alt="Fixturbo" />
+                <img src="assets/img/normal/16th.jpg" alt="Smart Parking Solutions" />
               </div>
               <div className="about-counter-wrap jump-reverse">
-                <img src="assets/img/icon/about_icon2-1.svg" alt="Fixturbo" />
+                <img src="assets/img/icon/about_icon2-1.svg" alt="Daily Users Icon" />
                 <h3 className="about-counter">
                   <TrackVisibility once>
                     {({ isVisible }) =>
@@ -33,7 +33,7 @@ const AboutTwo = () => {
               <div className="about-year-wrap2 movingX">
                 <div className="about-year-grid-wrap">
                   <div className="icon">
-                    <img src="assets/img/icon/about_icon2-2.png" alt="Fixturbo" />
+                    <img src="assets/img/icon/about_icon2-2.png" alt="Parking Zones Icon" />
                   </div>
                   <h3 className="about-counter">
                     <span className="counter-number">9</span>
@@ -52,7 +52,7 @@ const AboutTwo = () => {
                   <img
                     className="title-bg-shape shape-center"
                     src="assets/img/bg/title-bg-shape.png"
-                    alt="Fixturbo"
+                    alt="Parking System Title"
                   />
                 </h2>
                 <p className="sec-text mb-4">
@@ -64,7 +64,7 @@ const AboutTwo = () => {
               </div>
               <div className="about-feature-wrap style-shadow mb-4">
                 <div className="icon">
-                  <img src="assets/img/icon/about_icon2-3.svg" alt="Fixturbo" />
+                  <img src="assets/img/icon/about_icon2-3.svg" alt="Smart Access Control Icon" />
                 </div>
                 <div className="about-feature-wrap-details">
                   <h5 className="about-feature-title">
@@ -78,7 +78,7 @@ const AboutTwo = () => {
               </div>
               <div className="about-feature-wrap style-shadow">
                 <div className="icon">
-                  <img src="assets/img/icon/about_icon2-4.svg" alt="Fixturbo" />
+                  <img src="assets/img/icon/about_icon2-4.svg" alt="Real-Time Analytics Icon" />
                 </div>
                 <div className="about-feature-wrap-details">
                   <h5 className="about-feature-title">Real-Time Analytics</h5>
