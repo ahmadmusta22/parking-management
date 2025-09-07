@@ -48,32 +48,23 @@ const LoginPage = () => {
   }, [isAuthenticated, navigate, location]);
 
   const handleLoginSubmit = async (data) => {
-    console.log('Form submitted with credentials:', data);
     setLoading(true);
     clearError();
 
     const result = await login(data);
-    console.log('Login result:', result);
     
     if (result.success) {
       // Redirect based on user role
       const from = location.state?.from?.pathname || '/';
       const loggedInUser = result.user || user;
-      console.log('Logged in user:', loggedInUser);
-      console.log('Redirecting from:', from);
       
       if (loggedInUser?.role === 'admin') {
-        console.log('Redirecting to admin');
         navigate('/admin', { replace: true });
       } else if (loggedInUser?.role === 'employee') {
-        console.log('Redirecting to checkpoint');
         navigate('/checkpoint', { replace: true });
       } else {
-        console.log('Redirecting to:', from);
         navigate(from, { replace: true });
       }
-    } else {
-      console.log('Login failed:', result.error);
     }
     
     setLoading(false);

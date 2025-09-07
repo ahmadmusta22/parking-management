@@ -46,7 +46,6 @@ const useAuthStore = create(
           localStorage.setItem('authToken', token);
           localStorage.setItem('user', JSON.stringify(user));
           
-          console.log('AuthStore: Login successful, returning user:', user);
           return { success: true, user };
         } catch (error) {
           const errorMessage = error.response?.data?.message || error.message || 'Login failed';
@@ -57,7 +56,6 @@ const useAuthStore = create(
             isLoading: false,
             error: errorMessage
           });
-          console.log('AuthStore: Login failed:', errorMessage);
           return { success: false, error: errorMessage };
         }
       },

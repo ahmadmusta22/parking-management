@@ -21,7 +21,6 @@ class WebSocketService {
       this.ws = new WebSocket(wsUrl);
       
       this.ws.onopen = () => {
-        console.log('WebSocket connected');
         this.reconnectAttempts = 0;
         this.isConnected = true;
         this.offlineMode = false;
@@ -49,7 +48,6 @@ class WebSocketService {
       };
 
       this.ws.onclose = () => {
-        console.log('WebSocket disconnected');
         this.isConnected = false;
         this.offlineMode = true;
         this.lastDisconnected = new Date().toISOString();
@@ -149,7 +147,6 @@ class WebSocketService {
 
   sendPendingMessages() {
     if (this.pendingMessages.length > 0) {
-      console.log(`Sending ${this.pendingMessages.length} pending messages`);
       this.pendingMessages.forEach(message => {
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
           this.ws.send(JSON.stringify(message));
@@ -189,7 +186,6 @@ class WebSocketService {
   // Enhanced reconnection with exponential backoff
   reconnect() {
     if (this.reconnectAttempts >= this.maxReconnectAttempts) {
-      console.log('Max reconnection attempts reached');
       this.emit('max-reconnect-attempts');
       return;
     }
@@ -199,8 +195,6 @@ class WebSocketService {
       30000 // Max 30 seconds
     );
 
-    console.log(`Attempting to reconnect in ${delay}ms (attempt ${this.reconnectAttempts + 1})`);
-    
     setTimeout(() => {
       this.reconnectAttempts++;
       this.connect();

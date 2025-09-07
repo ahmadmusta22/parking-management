@@ -15,7 +15,6 @@ const ClientAreaOne = () => {
 
   const handleAppointmentSubmit = async (data) => {
     // Simulate appointment booking
-    console.log('Appointment form submitted:', data);
     // In a real app, you would send this data to your backend
   };
 

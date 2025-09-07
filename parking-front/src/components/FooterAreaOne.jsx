@@ -10,7 +10,6 @@ const FooterAreaOne = () => {
 
   const handleNewsletterSubmit = async (data) => {
     // Simulate newsletter subscription
-    console.log('Newsletter subscription:', data);
     // In a real app, you would send this data to your backend
   };
 

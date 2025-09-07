@@ -67,11 +67,9 @@ const GatePage = () => {
   const { data: zonesData, isLoading: zonesLoading, error: zonesError } = useQuery({
     queryKey: ['zones', gateId],
     queryFn: () => {
-      console.log('Fetching zones for gateId:', gateId);
       return masterAPI.getZones(gateId);
     },
     select: (response) => {
-      console.log('Zones API response:', response);
       return response.data;
     },
     enabled: !!gateId
@@ -82,7 +80,6 @@ const GatePage = () => {
     if (gatesData && gateId) {
       const gate = gatesData.find(g => g.id === gateId);
       if (gate) {
-        console.log('Setting current gate:', gate);
         setCurrentGate(gate);
       } else {
         navigate('/');
@@ -93,7 +90,6 @@ const GatePage = () => {
   // Set zones in store when zones data is loaded
   useEffect(() => {
     if (zonesData) {
-      console.log('Setting zones in store:', zonesData);
       setZones(zonesData);
     }
   }, [zonesData, setZones]);
@@ -109,7 +105,6 @@ const GatePage = () => {
 
       const handleAdminUpdate = (adminData) => {
         // Handle admin updates if needed
-        console.log('Admin update received:', adminData);
       };
 
       const handleConnected = () => {
@@ -258,12 +253,7 @@ const GatePage = () => {
     );
   }
 
-  // Debug info
-  console.log('GatePage render - gatesData:', gatesData);
-  console.log('GatePage render - zonesData:', zonesData);
-  console.log('GatePage render - zonesError:', zonesError);
-  console.log('GatePage render - currentGate:', currentGate);
-  console.log('GatePage render - currentGateZones:', currentGateZones);
+  // Debug info removed to reduce console spam
 
   return (
     <>

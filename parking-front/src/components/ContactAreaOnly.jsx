@@ -13,7 +13,6 @@ const ContactAreaOnly = () => {
 
   const handleContactSubmit = async (data) => {
     // Simulate form submission
-    console.log('Contact form submitted:', data);
     // In a real app, you would send this data to your backend
   };
 
