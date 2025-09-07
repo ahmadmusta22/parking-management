@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import useParkingStore from '../../store/parkingStore';
+import './AdminAuditLog.css';
 
 const AdminAuditLog = () => {
   const { adminAuditLog, clearAdminAuditLog } = useParkingStore();
@@ -114,18 +115,20 @@ const AdminAuditLog = () => {
   };
 
   return (
-    <div className="admin-audit-log">
-      {/* Header with controls */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <h4>
-            <i className="fas fa-history me-2"></i>
-            Admin Audit Log
-          </h4>
-          <small className="text-muted">
-            Real-time updates from admin actions ({filteredEntries.length} entries)
-          </small>
-        </div>
+    <div className="audit-log-container">
+      {/* Header */}
+      <div className="audit-log-header">
+        <h4>
+          <i className="fas fa-history me-2"></i>
+          Admin Audit Log
+          <span className="badge">{filteredEntries.length} entries</span>
+        </h4>
+        <p className="mb-0 opacity-75">
+          Real-time updates from admin actions
+        </p>
+      </div>
+      {/* Controls */}
+      <div className="audit-controls">
         <div className="d-flex gap-2">
           <button
             className={`btn btn-sm ${autoRefresh ? 'btn-success' : 'btn-outline-secondary'}`}
@@ -208,15 +211,16 @@ const AdminAuditLog = () => {
           </div>
         </div>
       </div>
+      </div>
 
       {/* Audit entries */}
       {filteredEntries.length === 0 ? (
-        <div className="text-center py-5">
-          <i className="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
-          <h5 className="text-muted">
+        <div className="empty-state">
+          <i className="fas fa-clipboard-list"></i>
+          <h5>
             {adminAuditLog.length === 0 ? 'No admin actions yet' : 'No matching entries'}
           </h5>
-          <p className="text-muted">
+          <p>
             {adminAuditLog.length === 0 
               ? 'Admin actions will appear here in real-time'
               : 'Try adjusting your search or filter criteria'
@@ -246,23 +250,36 @@ const AdminAuditLog = () => {
                     {entry.details && Object.keys(entry.details).length > 0 && (
                       <div className="audit-details mb-2">
                         {Object.entries(entry.details).map(([key, value]) => (
-                          <span key={key} className="badge bg-light text-dark me-1 mb-1">
-                            {key}: {typeof value === 'object' ? JSON.stringify(value) : value}
-                          </span>
+                          <div key={key} className="detail-item mb-1">
+                            <span className="detail-label text-muted small">{key}:</span>
+                            <span className="detail-value ms-1">
+                              {typeof value === 'object' ? (
+                                <div className="object-details">
+                                  {Object.entries(value).map(([subKey, subValue]) => (
+                                    <span key={subKey} className="badge bg-primary me-1 mb-1">
+                                      {subKey}: {subValue}
+                                    </span>
+                                  ))}
+                                </div>
+                              ) : (
+                                <span className="badge bg-success">{value}</span>
+                              )}
+                            </span>
+                          </div>
                         ))}
                       </div>
                     )}
                   </div>
                   
-                  <div className="col-md-4 text-end">
+                  <div className="col-md-4">
                     <div className="audit-meta">
-                      <div className="text-muted small">
-                        <i className="fas fa-user me-1"></i>
-                        {entry.adminId}
+                      <div className="user-info">
+                        <i className="fas fa-user"></i>
+                        <span>{entry.adminId}</span>
                       </div>
-                      <div className="text-muted small">
-                        <i className="fas fa-clock me-1"></i>
-                        {formatTimestamp(entry.timestamp)}
+                      <div className="timestamp">
+                        <i className="fas fa-clock"></i>
+                        <span>{formatTimestamp(entry.timestamp)}</span>
                       </div>
                     </div>
                   </div>
