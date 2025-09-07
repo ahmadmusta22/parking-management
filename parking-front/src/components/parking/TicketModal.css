@@ -1,0 +1,202 @@
+/* Ticket Modal Print Styles */
+
+/* Hide everything except the ticket content when printing */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .ticket-print-content,
+  .ticket-print-content * {
+    visibility: visible;
+  }
+  
+  .ticket-print-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none;
+    border: none;
+  }
+  
+  /* Hide modal overlay and controls */
+  .modal,
+  .modal-backdrop,
+  .modal-header,
+  .modal-footer,
+  .btn-close,
+  .btn {
+    display: none !important;
+  }
+  
+  /* Ticket styling for print */
+  .ticket-print-content {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    color: black;
+  }
+  
+  .ticket-print-content .ticket-header {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .ticket-print-content .ticket-header h1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .ticket-print-content .ticket-subtitle {
+    font-size: 10px;
+    margin: 5px 0 0 0;
+    color: #666;
+  }
+  
+  .ticket-print-content .ticket-details {
+    margin-bottom: 15px;
+  }
+  
+  .ticket-print-content .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 2px 0;
+    border-bottom: 1px dotted #ccc;
+  }
+  
+  .ticket-print-content .detail-label {
+    font-weight: bold;
+    min-width: 80px;
+  }
+  
+  .ticket-print-content .detail-value {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .ticket-print-content .ticket-id {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  
+  .ticket-print-content .ticket-type {
+    background: #000;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  
+  .ticket-print-content .qr-section {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px dashed #000;
+  }
+  
+  .ticket-print-content .qr-placeholder {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #000;
+    margin: 0 auto 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  
+  .ticket-print-content .instructions {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #000;
+    background: #f9f9f9;
+  }
+  
+  .ticket-print-content .instructions h3 {
+    font-size: 12px;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+  }
+  
+  .ticket-print-content .instructions ul {
+    margin: 0;
+    padding-left: 15px;
+  }
+  
+  .ticket-print-content .instructions li {
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+  
+  .ticket-print-content .footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #000;
+    font-size: 10px;
+    color: #666;
+  }
+}
+
+/* Screen styles for better ticket appearance */
+.ticket-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.ticket-details .detail-item {
+  margin-bottom: 8px;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.detail-value {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+.ticket-id {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #0d6efd;
+  letter-spacing: 1px;
+}
+
+.qr-placeholder {
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.qr-text {
+  font-size: 0.7rem;
+  color: #6c757d;
+  margin-top: 2px;
+}

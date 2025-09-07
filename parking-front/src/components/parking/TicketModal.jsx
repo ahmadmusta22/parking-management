@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TicketPrintAnimation from './TicketPrintAnimation';
+import './TicketModal.css';
 
 const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
   const [isPrinting, setIsPrinting] = useState(false);
@@ -35,6 +36,66 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
         isPrinting={isPrinting}
         onPrintComplete={handlePrintComplete}
       />
+
+      {/* Printable Ticket Content - Hidden on screen, visible when printing */}
+      <div className="ticket-print-content" style={{ display: 'none' }}>
+        <div className="ticket-header">
+          <h1>PARKING TICKET</h1>
+          <p className="ticket-subtitle">Keep this ticket for exit</p>
+        </div>
+        
+        <div className="ticket-details">
+          <div className="detail-row">
+            <span className="detail-label">Ticket ID:</span>
+            <span className="detail-value ticket-id">{ticket.id}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Type:</span>
+            <span className="detail-value">
+              <span className="ticket-type">{ticket.type === 'visitor' ? 'Visitor' : 'Subscriber'}</span>
+            </span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Check-in Time:</span>
+            <span className="detail-value">{formatDate(ticket.checkinAt)}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Gate:</span>
+            <span className="detail-value">{ticketGate?.name || gate?.name || 'N/A'}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Zone:</span>
+            <span className="detail-value">{zone?.name || 'N/A'}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Category:</span>
+            <span className="detail-value">{zone?.categoryId || 'N/A'}</span>
+          </div>
+        </div>
+        
+        <div className="qr-section">
+          <div className="qr-placeholder">
+            <div>QR</div>
+            <div>CODE</div>
+          </div>
+          <p>Scan at checkpoint</p>
+        </div>
+        
+        <div className="instructions">
+          <h3>Important Instructions</h3>
+          <ul>
+            <li>Keep this ticket safe and dry</li>
+            <li>Present at checkpoint for exit</li>
+            <li>Replacement fees apply for lost tickets</li>
+            <li>Valid for 24 hours from check-in time</li>
+          </ul>
+        </div>
+        
+        <div className="footer">
+          <p>WeLink CARGO Parking System</p>
+          <p>Generated: {formatDate(ticket.checkinAt)}</p>
+        </div>
+      </div>
 
       <div className="modal fade show d-block" style={{ 
         backgroundColor: 'rgba(0,0,0,0.5)', 
