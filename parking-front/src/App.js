@@ -8,6 +8,7 @@ import { initializeAccessibility } from './utils/accessibility';
 import { initializeAllCompatibility } from './utils/browserCompatibility';
 import { initializePWA } from './utils/pwa';
 import { initializeErrorTracking, ErrorBoundary } from './utils/errorTracking';
+import './utils/consoleSuppress';
 import HomePageOne from "./pages/HomePageOne";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
 import AnimatedScrollToTop from "./components/AnimatedScrollToTop";
