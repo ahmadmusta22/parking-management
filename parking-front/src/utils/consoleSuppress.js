@@ -12,14 +12,21 @@ const originalConsole = {
   debug: console.debug
 };
 
-// Override console methods to suppress output
-if (process.env.NODE_ENV === 'development') {
-  console.log = () => {};
-  console.warn = () => {};
-  console.error = () => {};
-  console.info = () => {};
-  console.debug = () => {};
-}
+// Override console methods to suppress output immediately
+console.log = () => {};
+console.warn = () => {};
+console.error = () => {};
+console.info = () => {};
+console.debug = () => {};
+console.trace = () => {};
+console.table = () => {};
+console.group = () => {};
+console.groupEnd = () => {};
+console.groupCollapsed = () => {};
+console.time = () => {};
+console.timeEnd = () => {};
+console.count = () => {};
+console.clear = () => {};
 
 // Export function to restore console if needed
 export const restoreConsole = () => {
