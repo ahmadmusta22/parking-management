@@ -7,6 +7,7 @@ This guide provides step-by-step instructions for testing all the key features o
 1. **Backend Server**: Ensure the backend is running on `http://localhost:3000`
 2. **Frontend Application**: Start the React app on `http://localhost:3001`
 3. **Browser**: Use Chrome, Firefox, or Safari for best experience
+4. **Local Development**: This demo is designed for local development and testing only
 
 ## Demo Account Credentials
 
@@ -263,7 +264,7 @@ This guide provides step-by-step instructions for testing all the key features o
 
 ## Conclusion
 
-This demo showcases a production-ready parking reservation system with:
+This demo showcases a fully functional parking reservation system designed for local development and testing with:
 - ✅ Complete visitor and subscriber flows
 - ✅ Real-time WebSocket updates
 - ✅ Comprehensive admin controls
@@ -272,6 +273,6 @@ This demo showcases a production-ready parking reservation system with:
 - ✅ Professional UI/UX
 - ✅ Mobile optimization
 
-The system demonstrates enterprise-level functionality with excellent user experience and technical implementation.
+The system demonstrates enterprise-level functionality with excellent user experience and technical implementation, ready for local development and evaluation.
 
 

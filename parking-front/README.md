@@ -31,9 +31,9 @@ A React-based frontend application for a parking reservation system that support
 
 ### Installation
 
-1. **Clone and navigate to the frontend directory:**
+1. **Clone and navigate to the project directory:**
    ```bash
-   cd fixturbo
+   cd parking-management-fullstack
    ```
 
 2. **Install dependencies:**
@@ -41,22 +41,19 @@ A React-based frontend application for a parking reservation system that support
    npm install
    ```
 
-3. **Set up environment variables:**
-   ```bash
-   cp env.example .env
-   ```
-   Edit `.env` if needed (default values should work for local development).
+3. **Environment setup:**
+   No additional environment configuration is required. The application uses default localhost URLs that work with the provided backend.
 
 4. **Start the backend server:**
    ```bash
-   cd ../parking-reservations-system-task
+   cd ../parking-back
    npm install
    npm start
    ```
 
 5. **Start the frontend development server:**
    ```bash
-   cd ../fixturbo
+   cd ../parking-front
    npm start
    ```
 
@@ -172,12 +169,14 @@ src/
 
 ## Environment Variables
 
-Copy `env.example` to `.env` and configure:
+For local development, the following environment variables are used (default values work for local setup):
 
 ```env
 REACT_APP_API_URL=http://localhost:3000/api/v1
 REACT_APP_WS_URL=ws://localhost:3000/api/v1/ws
 ```
+
+**Note**: No additional environment configuration is required for local development. The application is designed to work with the provided backend running on localhost:3000.
 
 ## Testing
 
@@ -186,14 +185,14 @@ Run the test suite:
 npm test
 ```
 
-## Deployment
+## Building for Production
 
-Build for production:
+To build the application for production:
 ```bash
 npm run build
 ```
 
-The `build` folder contains the production-ready files.
+The `build` folder contains the production-ready files. Note: This project is configured for local development and testing only.
 
 ## Learn More
 
