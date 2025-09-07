@@ -3,29 +3,13 @@ import useParkingStore from '../../store/parkingStore';
 import './AdminAuditLog.css';
 
 const AdminAuditLog = () => {
-  const { adminAuditLog, clearAdminAuditLog, addAdminAuditEntry } = useParkingStore();
+  const { adminAuditLog, clearAdminAuditLog } = useParkingStore();
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('newest');
   const [autoRefresh, setAutoRefresh] = useState(true);
 
-  // Debug logging
-  console.log('AdminAuditLog render - adminAuditLog:', adminAuditLog);
-  console.log('AdminAuditLog render - adminAuditLog.length:', adminAuditLog?.length);
 
-  // Test function to add a sample audit entry
-  const addTestEntry = () => {
-    addAdminAuditEntry({
-      adminId: 'test_admin',
-      action: 'TEST_ACTION',
-      targetType: 'test',
-      targetId: 'test_123',
-      details: {
-        message: 'This is a test audit entry',
-        timestamp: new Date().toISOString()
-      }
-    });
-  };
 
   // Filter and sort audit entries
   const filteredEntries = useMemo(() => {
@@ -170,13 +154,6 @@ const AdminAuditLog = () => {
             <i className="fas fa-trash me-1"></i>
             Clear
           </button>
-          <button
-            className="btn btn-sm btn-outline-info"
-            onClick={addTestEntry}
-          >
-            <i className="fas fa-plus me-1"></i>
-            Test Entry
-          </button>
         </div>
       </div>
 
@@ -262,8 +239,8 @@ const AdminAuditLog = () => {
                   <div className="col-md-8">
                     <div className="d-flex align-items-center mb-2">
                       <i className={`${getActionIcon(entry.action)} me-2 text-${getActionColor(entry.action)}`}></i>
-                      <span className={`badge me-2 bg-${getActionColor(entry.action)}`}>
-                        {entry.action.replace(/-/g, ' ').toUpperCase()}
+                      <span className="fw-bold text-dark me-2">
+                        {entry.action.replace(/-/g, ' ')}
                       </span>
                       <span className="text-muted small">
                         {entry.targetType}: <strong>{entry.targetId}</strong>
@@ -279,13 +256,13 @@ const AdminAuditLog = () => {
                               {typeof value === 'object' ? (
                                 <div className="object-details">
                                   {Object.entries(value).map(([subKey, subValue]) => (
-                                    <span key={subKey} className="badge bg-primary me-1 mb-1">
+                                    <span key={subKey} className="text-dark me-2">
                                       {subKey}: {subValue}
                                     </span>
                                   ))}
                                 </div>
                               ) : (
-                                <span className="badge bg-success">{value}</span>
+                                <span className="text-dark">{value}</span>
                               )}
                             </span>
                           </div>

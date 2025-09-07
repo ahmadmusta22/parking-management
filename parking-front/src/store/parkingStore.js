@@ -156,9 +156,7 @@ const useParkingStore = create(
   },
   
   addAdminAuditEntry: (entry) => {
-    console.log('addAdminAuditEntry called with:', entry);
     const { adminAuditLog } = get();
-    console.log('Current adminAuditLog:', adminAuditLog);
     
     const newEntry = {
       ...entry,
@@ -166,14 +164,10 @@ const useParkingStore = create(
       timestamp: new Date().toISOString()
     };
     
-    console.log('New audit entry:', newEntry);
-    
     // Keep only last 50 entries
     const updatedLog = [newEntry, ...adminAuditLog].slice(0, 50);
-    console.log('Updated audit log:', updatedLog);
     
     set({ adminAuditLog: updatedLog });
-    console.log('Audit log updated in store');
   },
   
   clearAdminAuditLog: () => {

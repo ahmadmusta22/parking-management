@@ -61,17 +61,6 @@ const AdminControlPanel = () => {
     mutationFn: ({ categoryId, data }) => adminAPI.updateCategory(categoryId, data),
     onSuccess: (response, { categoryId, data }) => {
       // Log audit entry
-      console.log('Adding audit entry for category update:', {
-        adminId: user?.id || 'admin',
-        action: 'UPDATE_CATEGORY',
-        targetType: 'category',
-        targetId: categoryId,
-        details: {
-          updatedFields: Object.keys(data),
-          newValues: data
-        }
-      });
-      
       addAdminAuditEntry({
         adminId: user?.id || 'admin',
         action: 'UPDATE_CATEGORY',
