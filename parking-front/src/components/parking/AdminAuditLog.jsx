@@ -3,7 +3,7 @@ import useParkingStore from '../../store/parkingStore';
 import './AdminAuditLog.css';
 
 const AdminAuditLog = () => {
-  const { adminAuditLog, clearAdminAuditLog } = useParkingStore();
+  const { adminAuditLog, clearAdminAuditLog, addAdminAuditEntry } = useParkingStore();
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('newest');
@@ -13,9 +13,23 @@ const AdminAuditLog = () => {
   console.log('AdminAuditLog render - adminAuditLog:', adminAuditLog);
   console.log('AdminAuditLog render - adminAuditLog.length:', adminAuditLog?.length);
 
+  // Test function to add a sample audit entry
+  const addTestEntry = () => {
+    addAdminAuditEntry({
+      adminId: 'test_admin',
+      action: 'TEST_ACTION',
+      targetType: 'test',
+      targetId: 'test_123',
+      details: {
+        message: 'This is a test audit entry',
+        timestamp: new Date().toISOString()
+      }
+    });
+  };
+
   // Filter and sort audit entries
   const filteredEntries = useMemo(() => {
-    let filtered = adminAuditLog;
+    let filtered = adminAuditLog || [];
 
     // Filter by action type
     if (filter !== 'all') {
@@ -156,6 +170,13 @@ const AdminAuditLog = () => {
             <i className="fas fa-trash me-1"></i>
             Clear
           </button>
+          <button
+            className="btn btn-sm btn-outline-info"
+            onClick={addTestEntry}
+          >
+            <i className="fas fa-plus me-1"></i>
+            Test Entry
+          </button>
         </div>
       </div>
 
@@ -220,10 +241,10 @@ const AdminAuditLog = () => {
         <div className="empty-state">
           <i className="fas fa-clipboard-list"></i>
           <h5>
-            {adminAuditLog.length === 0 ? 'No admin actions yet' : 'No matching entries'}
+            {(adminAuditLog || []).length === 0 ? 'No admin actions yet' : 'No matching entries'}
           </h5>
           <p>
-            {adminAuditLog.length === 0 
+            {(adminAuditLog || []).length === 0 
               ? 'Admin actions will appear here in real-time'
               : 'Try adjusting your search or filter criteria'
             }
@@ -296,7 +317,7 @@ const AdminAuditLog = () => {
       {filteredEntries.length > 0 && (
         <div className="d-flex justify-content-between align-items-center mt-4">
           <small className="text-muted">
-            Showing {filteredEntries.length} of {adminAuditLog.length} entries
+            Showing {filteredEntries.length} of {(adminAuditLog || []).length} entries
           </small>
           <small className="text-muted">
             Last updated: {new Date().toLocaleTimeString()}
