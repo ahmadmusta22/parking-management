@@ -247,7 +247,7 @@ const AdminAuditLog = () => {
                       <div className="audit-details mb-2">
                         {Object.entries(entry.details).map(([key, value]) => (
                           <span key={key} className="badge bg-light text-dark me-1 mb-1">
-                            {key}: {value}
+                            {key}: {typeof value === 'object' ? JSON.stringify(value) : value}
                           </span>
                         ))}
                       </div>
