@@ -8,6 +8,7 @@ const AdminAuditLog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('newest');
   const [autoRefresh, setAutoRefresh] = useState(true);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
 
 
@@ -89,9 +90,16 @@ const AdminAuditLog = () => {
   };
 
   const clearLog = () => {
-    if (window.confirm('Are you sure you want to clear the audit log? This action cannot be undone.')) {
-      clearAdminAuditLog();
-    }
+    setShowConfirmModal(true);
+  };
+
+  const handleConfirmClear = () => {
+    clearAdminAuditLog();
+    setShowConfirmModal(false);
+  };
+
+  const handleCancelClear = () => {
+    setShowConfirmModal(false);
   };
 
   const exportLog = () => {
@@ -299,6 +307,53 @@ const AdminAuditLog = () => {
           <small className="text-muted">
             Last updated: {new Date().toLocaleTimeString()}
           </small>
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {showConfirmModal && (
+        <div className="modal fade show d-block" style={{ 
+          backgroundColor: 'rgba(0,0,0,0.5)', 
+          zIndex: 9999,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <i className="fas fa-exclamation-triangle text-warning me-2"></i>
+                  Confirm Clear Audit Log
+                </h5>
+              </div>
+              <div className="modal-body">
+                <p>Are you sure you want to clear the audit log? This action cannot be undone.</p>
+              </div>
+              <div className="modal-footer">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary" 
+                  onClick={handleCancelClear}
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="button" 
+                  className="btn btn-danger" 
+                  onClick={handleConfirmClear}
+                >
+                  <i className="fas fa-trash me-1"></i>
+                  Clear Log
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
