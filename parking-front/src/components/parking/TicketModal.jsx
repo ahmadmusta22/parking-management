@@ -29,12 +29,19 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
     if (onPrint) onPrint();
   };
 
+  const handleSkipAnimation = () => {
+    setIsPrinting(false);
+    window.print();
+    if (onPrint) onPrint();
+  };
+
   return (
     <>
       {/* Print Animation */}
       <TicketPrintAnimation
         isPrinting={isPrinting}
         onPrintComplete={handlePrintComplete}
+        onSkipAnimation={handleSkipAnimation}
       />
 
       {/* Printable Ticket Content - Hidden on screen, visible when printing */}

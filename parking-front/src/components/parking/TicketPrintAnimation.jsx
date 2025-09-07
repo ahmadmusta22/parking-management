@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TicketPrintAnimation = ({ isPrinting, onPrintComplete }) => {
+const TicketPrintAnimation = ({ isPrinting, onPrintComplete, onSkipAnimation }) => {
   const [printPhase, setPrintPhase] = useState('idle');
   const [progress, setProgress] = useState(0);
 
@@ -9,28 +9,44 @@ const TicketPrintAnimation = ({ isPrinting, onPrintComplete }) => {
       setPrintPhase('printing');
       setProgress(0);
       
-      // Simulate printing progress
+      // Fallback timeout to ensure print always completes
+      const fallbackTimeout = setTimeout(() => {
+        setPrintPhase('complete');
+        setTimeout(() => {
+          setPrintPhase('idle');
+          if (onPrintComplete) {
+            onPrintComplete();
+          }
+        }, 1000);
+      }, 5000); // 5 second fallback
+      
+      // Simulate printing progress with more reliable timing
       const interval = setInterval(() => {
         setProgress(prev => {
-          if (prev >= 100) {
+          const newProgress = prev + 15; // Faster progress
+          if (newProgress >= 100) {
             clearInterval(interval);
+            clearTimeout(fallbackTimeout);
             setPrintPhase('complete');
             
-            // Show completion briefly
+            // Show completion briefly then trigger print
             setTimeout(() => {
               setPrintPhase('idle');
               if (onPrintComplete) {
                 onPrintComplete();
               }
-            }, 1500);
+            }, 1000); // Shorter delay
             
             return 100;
           }
-          return prev + 10;
+          return newProgress;
         });
-      }, 150);
+      }, 200); // Slightly slower interval for smoother animation
       
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        clearTimeout(fallbackTimeout);
+      };
     } else {
       setPrintPhase('idle');
       setProgress(0);
@@ -103,6 +119,15 @@ const TicketPrintAnimation = ({ isPrinting, onPrintComplete }) => {
               ></div>
             </div>
             <div className="progress-text">{progress}%</div>
+            {onSkipAnimation && (
+              <button 
+                className="btn btn-sm btn-outline-secondary mt-2"
+                onClick={onSkipAnimation}
+                style={{ fontSize: '0.8rem' }}
+              >
+                Skip Animation
+              </button>
+            )}
           </div>
         )}
       </div>
