@@ -48,24 +48,24 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
         overflow: 'auto'
       }}>
         <div className="modal-dialog" style={{
-          margin: '5rem auto',
-          maxHeight: 'calc(100vh - 10rem)',
+          margin: '6rem auto',
+          maxHeight: 'calc(100vh - 12rem)',
           display: 'flex',
           flexDirection: 'column',
-          width: '75%',
-          maxWidth: '300px'
+          width: '70%',
+          maxWidth: '280px'
         }}>
           <div className="modal-content" style={{
-            maxHeight: 'calc(100vh - 10rem)',
+            maxHeight: 'calc(100vh - 12rem)',
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column'
           }}>
-            <div className="modal-header">
-              <h5 className="modal-title">
-                <i className="fas fa-ticket-alt me-2"></i>
+            <div className="modal-header" style={{ padding: '0.5rem' }}>
+              <h6 className="modal-title mb-0">
+                <i className="fas fa-ticket-alt me-1"></i>
                 Parking Ticket
-              </h5>
+              </h6>
               <button 
                 type="button" 
                 className="btn-close" 
@@ -76,19 +76,19 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
             <div className="modal-body" style={{
               overflow: 'auto',
               flex: 1,
-              padding: '0.25rem',
-              maxHeight: 'calc(100vh - 14rem)'
+              padding: '0.2rem',
+              maxHeight: 'calc(100vh - 16rem)'
             }}>
               <div className="ticket-content">
                 {/* Ticket Header */}
                 <div className="text-center mb-1">
-                  <h6 className="text-primary mb-0">PARKING TICKET</h6>
+                  <h6 className="text-primary mb-0 small">PARKING TICKET</h6>
                   <p className="text-muted small mb-1">Keep this ticket for exit</p>
                 </div>
 
                 {/* Ticket Details */}
                 <div className="ticket-details">
-                  <div className="row g-1">
+                  <div className="row g-0">
                     <div className="col-6">
                       <div className="detail-item">
                         <label className="detail-label">Ticket ID</label>
@@ -134,7 +134,7 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
 
                 {/* QR Code Placeholder */}
                 <div className="ticket-qr text-center mt-1">
-                  <div className="qr-placeholder" style={{ padding: '0.1rem' }}>
+                  <div className="qr-placeholder" style={{ padding: '0.05rem' }}>
                     <i className="fas fa-qrcode text-muted small"></i>
                     <div className="qr-text small">QR Code</div>
                   </div>
@@ -145,9 +145,9 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
                   <div className="alert alert-info small">
                     <h6 className="small mb-1"><i className="fas fa-info-circle me-1"></i>Instructions</h6>
                     <ul className="mb-0 small">
-                      <li>Keep this ticket safe</li>
-                      <li>Present at checkpoint when leaving</li>
-                      <li>Replacement fees may apply</li>
+                      <li>Keep ticket safe</li>
+                      <li>Present at checkpoint</li>
+                      <li>Replacement fees apply</li>
                     </ul>
                   </div>
                 </div>
@@ -157,23 +157,23 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
             <div className="modal-footer" style={{
               flexShrink: 0,
               borderTop: '1px solid #dee2e6',
-              padding: '0.25rem'
+              padding: '0.2rem'
             }}>
               <button 
                 type="button" 
-                className="btn btn-secondary" 
+                className="btn btn-secondary btn-sm" 
                 onClick={onClose}
               >
-                <i className="fas fa-times me-2"></i>
+                <i className="fas fa-times me-1"></i>
                 Close
               </button>
               <button 
                 type="button" 
-                className="btn btn-primary" 
+                className="btn btn-primary btn-sm" 
                 onClick={handlePrint}
               >
-                <i className="fas fa-print me-2"></i>
-                Print Ticket
+                <i className="fas fa-print me-1"></i>
+                Print
               </button>
             </div>
           </div>
