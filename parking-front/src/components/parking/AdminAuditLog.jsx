@@ -314,7 +314,7 @@ const AdminAuditLog = () => {
       {showConfirmModal && (
         <div className="modal fade show d-block" style={{ 
           backgroundColor: 'rgba(0,0,0,0.5)', 
-          zIndex: 9999,
+          zIndex: 99999,
           position: 'fixed',
           top: 0,
           left: 0,
@@ -322,7 +322,8 @@ const AdminAuditLog = () => {
           bottom: 0,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          marginTop: '60px'
         }}>
           <div className="modal-dialog">
             <div className="modal-content">
