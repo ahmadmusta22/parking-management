@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TicketModal.css';
 
 const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
+  const [isPrinting, setIsPrinting] = useState(false);
 
   if (!ticket) return null;
 
@@ -25,13 +26,53 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
   };
 
   const handlePrint = () => {
-    console.log('Print button clicked - opening print dialog');
-    window.print();
-    if (onPrint) onPrint();
+    console.log('=== NEW SIMPLE PRINT FUNCTION ===');
+    console.log('Print button clicked - showing animation then opening print dialog');
+    
+    // Show printing animation
+    setIsPrinting(true);
+    
+    // After 2 seconds, open print dialog
+    setTimeout(() => {
+      setIsPrinting(false);
+      window.print();
+      if (onPrint) onPrint();
+    }, 2000);
   };
 
   return (
     <>
+      {/* Simple Print Animation Overlay */}
+      {isPrinting && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10000
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            padding: '2rem',
+            borderRadius: '10px',
+            textAlign: 'center',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
+          }}>
+            <i className="fas fa-print fa-3x text-primary mb-3"></i>
+            <h4>Printing Ticket...</h4>
+            <p className="text-muted">Please wait while your ticket is being prepared</p>
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Printable Ticket Content - Hidden on screen, visible when printing */}
       <div className="ticket-print-content" style={{ display: 'none' }}>
         <div className="ticket-header">
@@ -103,15 +144,15 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
         overflow: 'auto'
       }}>
         <div className="modal-dialog" style={{
-          margin: '6rem auto',
-          maxHeight: 'calc(100vh - 12rem)',
+          margin: '2rem auto',
+          maxHeight: 'calc(100vh - 4rem)',
           display: 'flex',
           flexDirection: 'column',
-          width: '90%',
-          maxWidth: '400px'
+          width: '95%',
+          maxWidth: '600px'
         }}>
           <div className="modal-content" style={{
-            maxHeight: 'calc(100vh - 12rem)',
+            maxHeight: 'calc(100vh - 4rem)',
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column'
@@ -131,21 +172,21 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
             <div className="modal-body" style={{
               overflow: 'auto',
               flex: 1,
-              padding: '0.2rem',
-              maxHeight: 'calc(100vh - 16rem)'
+              padding: '1rem',
+              maxHeight: 'calc(100vh - 8rem)'
             }}>
               <div className="ticket-content">
                 {/* Ticket Header */}
-                <div className="text-center mb-1">
-                  <h6 className="text-primary mb-0 small">PARKING TICKET</h6>
-                  <p className="text-muted small mb-1">Keep this ticket for exit</p>
+                <div className="text-center mb-3">
+                  <h4 className="text-primary mb-2">PARKING TICKET</h4>
+                  <p className="text-muted mb-2">Keep this ticket for exit</p>
                 </div>
 
                 {/* Ticket Details */}
                 <div className="ticket-details">
                   <div className="row g-0">
                     <div className="col-6">
-                      <div className="detail-item">
+                      <div className="detail-item mb-2">
                         <label className="detail-label">Ticket ID</label>
                         <div className="detail-value ticket-id">{ticket.id}</div>
                       </div>
