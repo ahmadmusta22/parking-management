@@ -69,7 +69,7 @@ const CheckpointPage = () => {
           const subResponse = await subscriptionAPI.getSubscription(ticketData.subscriptionId);
           setSubscription(subResponse.data);
         } catch (subError) {
-          console.warn('Could not fetch subscription:', subError);
+          // console.warn('Could not fetch subscription:', subError);
         }
       }
 

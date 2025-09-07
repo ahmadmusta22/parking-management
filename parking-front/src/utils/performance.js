@@ -108,7 +108,7 @@ export const measureMemoryUsage = () => {
     // Alert if memory usage is high
     const usagePercent = (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100;
     if (usagePercent > 80) {
-      console.warn('High memory usage detected:', usagePercent.toFixed(2) + '%');
+      // console.warn('High memory usage detected:', usagePercent.toFixed(2) + '%');
     }
   }
 };
@@ -120,7 +120,7 @@ export const measureAPIPerformance = (url, startTime, endTime) => {
   
   // Report slow API calls
   if (duration > 3000) {
-    console.warn(`Slow API call detected: ${url} - ${Math.round(duration)}ms`);
+    // console.warn(`Slow API call detected: ${url} - ${Math.round(duration)}ms`);
   }
   
   // Report to analytics
@@ -140,7 +140,7 @@ export const measureComponentRender = (componentName, startTime, endTime) => {
   
   // Report slow renders
   if (duration > 100) {
-    console.warn(`Slow component render: ${componentName} - ${Math.round(duration)}ms`);
+    // console.warn(`Slow component render: ${componentName} - ${Math.round(duration)}ms`);
   }
 };
 

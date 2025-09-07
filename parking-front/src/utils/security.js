@@ -105,7 +105,7 @@ export const secureStorage = {
       const encrypted = btoa(JSON.stringify(value));
       localStorage.setItem(key, encrypted);
     } catch (error) {
-      console.error('Storage error:', error);
+      // console.error('Storage error:', error);
     }
   },
   
@@ -115,7 +115,7 @@ export const secureStorage = {
       if (!encrypted) return null;
       return JSON.parse(atob(encrypted));
     } catch (error) {
-      console.error('Storage retrieval error:', error);
+      // console.error('Storage retrieval error:', error);
       return null;
     }
   },
@@ -132,11 +132,11 @@ export const secureStorage = {
 
 // Content Security Policy violation handler
 export const handleCSPViolation = (event) => {
-  console.error('CSP Violation:', {
-    blockedURI: event.blockedURI,
-    violatedDirective: event.violatedDirective,
-    originalPolicy: event.originalPolicy
-  });
+  // console.error('CSP Violation:', {
+  //   blockedURI: event.blockedURI,
+  //   violatedDirective: event.violatedDirective,
+  //   originalPolicy: event.originalPolicy
+  // });
   
   // In production, send to monitoring service
   if (process.env.NODE_ENV === 'production') {
