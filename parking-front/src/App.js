@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import useAuthStore from './store/authStore';
 import OfflineIndicator from './components/OfflineIndicator';
+import WebSocketStatus from './components/WebSocketStatus';
 import { initializePerformanceMonitoring } from './utils/performance';
 import { initializeAccessibility } from './utils/accessibility';
 import { initializeAllCompatibility } from './utils/browserCompatibility';
@@ -58,6 +59,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <OfflineIndicator />
+          <WebSocketStatus />
           <RouteScrollToTop />
           <AnimatedScrollToTop />
           <ToastProvider />

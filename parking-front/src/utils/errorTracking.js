@@ -434,18 +434,25 @@ export const initializeErrorTracking = () => {
   // console.log('Error tracking initialized');
 };
 
-// React Error Boundary
+// Enhanced React Error Boundary
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null };
+    this.state = { hasError: false, error: null, errorInfo: null };
   }
 
   static getDerivedStateFromError(error) {
-    return { hasError: true, error };
+    return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    
+    this.setState({
+      error: error,
+      errorInfo: errorInfo
+    });
+
     errorTracker.captureError(error, {
       type: ERROR_TYPES.JAVASCRIPT,
       severity: ERROR_SEVERITY.HIGH,
@@ -454,15 +461,92 @@ export class ErrorBoundary extends React.Component {
     });
   }
 
+  handleRetry = () => {
+    this.setState({ hasError: false, error: null, errorInfo: null });
+  };
+
+  handleReload = () => {
+    window.location.reload();
+  };
+
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '20px', textAlign: 'center' }}>
-          <h2>Something went wrong</h2>
-          <p>We're sorry, but something unexpected happened.</p>
-          <button onClick={() => window.location.reload()}>
-            Reload Page
-          </button>
+        <div className="error-boundary">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-8 col-lg-6">
+                <div className="card border-danger">
+                  <div className="card-header bg-danger text-white">
+                    <h4 className="mb-0">
+                      <i className="fas fa-exclamation-triangle me-2"></i>
+                      Something went wrong
+                    </h4>
+                  </div>
+                  <div className="card-body">
+                    <div className="text-center mb-4">
+                      <i className="fas fa-bug fa-4x text-danger mb-3"></i>
+                      <h5>Oops! An error occurred</h5>
+                      <p className="text-muted">
+                        We're sorry, but something unexpected happened. 
+                        This has been logged and we'll look into it.
+                      </p>
+                    </div>
+
+                    {/* Error Details (only in development) */}
+                    {process.env.NODE_ENV === 'development' && this.state.error && (
+                      <div className="mb-4">
+                        <h6>Error Details (Development Only):</h6>
+                        <div className="alert alert-danger">
+                          <strong>Error:</strong> {this.state.error.toString()}
+                        </div>
+                        {this.state.errorInfo && (
+                          <details className="mt-2">
+                            <summary>Stack Trace</summary>
+                            <pre className="mt-2" style={{ fontSize: '0.8rem', maxHeight: '200px', overflow: 'auto' }}>
+                              {this.state.errorInfo.componentStack}
+                            </pre>
+                          </details>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Action Buttons */}
+                    <div className="d-flex gap-2 justify-content-center">
+                      <button 
+                        className="btn btn-primary"
+                        onClick={this.handleRetry}
+                      >
+                        <i className="fas fa-redo me-1"></i>
+                        Try Again
+                      </button>
+                      <button 
+                        className="btn btn-outline-secondary"
+                        onClick={this.handleReload}
+                      >
+                        <i className="fas fa-refresh me-1"></i>
+                        Reload Page
+                      </button>
+                      <button 
+                        className="btn btn-outline-info"
+                        onClick={() => window.history.back()}
+                      >
+                        <i className="fas fa-arrow-left me-1"></i>
+                        Go Back
+                      </button>
+                    </div>
+
+                    {/* Help Text */}
+                    <div className="mt-4 text-center">
+                      <small className="text-muted">
+                        If this problem persists, please contact support.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     }
