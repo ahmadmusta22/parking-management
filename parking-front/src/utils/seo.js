@@ -248,7 +248,7 @@ export const seoOptimization = {
       if (heading.tagName === 'H1') {
         h1Count++;
         if (h1Count > 1) {
-          console.warn('Multiple H1 tags found. Consider using only one H1 per page.');
+          // console.warn('Multiple H1 tags found. Consider using only one H1 per page.');
         }
       }
     });
