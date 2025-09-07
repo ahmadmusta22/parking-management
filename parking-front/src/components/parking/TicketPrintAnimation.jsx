@@ -9,43 +9,43 @@ const TicketPrintAnimation = ({ isPrinting, onPrintComplete, onSkipAnimation }) 
       setPrintPhase('printing');
       setProgress(0);
       
-      // Fallback timeout to ensure print always completes
-      const fallbackTimeout = setTimeout(() => {
-        setPrintPhase('complete');
-        setTimeout(() => {
-          setPrintPhase('idle');
-          if (onPrintComplete) {
-            onPrintComplete();
-          }
-        }, 1000);
-      }, 5000); // 5 second fallback
+      let intervalId;
+      let timeoutId;
       
-      // Simulate printing progress with more reliable timing
-      const interval = setInterval(() => {
-        setProgress(prev => {
-          const newProgress = prev + 15; // Faster progress
-          if (newProgress >= 100) {
-            clearInterval(interval);
-            clearTimeout(fallbackTimeout);
+      // Simple, reliable progress animation
+      const animateProgress = () => {
+        let currentProgress = 0;
+        
+        intervalId = setInterval(() => {
+          currentProgress += 20; // 20% increments
+          
+          if (currentProgress >= 100) {
+            currentProgress = 100;
+            setProgress(100);
+            clearInterval(intervalId);
+            
+            // Complete the animation
             setPrintPhase('complete');
             
-            // Show completion briefly then trigger print
-            setTimeout(() => {
+            // Trigger print after showing completion
+            timeoutId = setTimeout(() => {
               setPrintPhase('idle');
               if (onPrintComplete) {
                 onPrintComplete();
               }
-            }, 1000); // Shorter delay
-            
-            return 100;
+            }, 1500);
+          } else {
+            setProgress(currentProgress);
           }
-          return newProgress;
-        });
-      }, 200); // Slightly slower interval for smoother animation
+        }, 300); // 300ms intervals
+      };
+      
+      // Start the animation
+      animateProgress();
       
       return () => {
-        clearInterval(interval);
-        clearTimeout(fallbackTimeout);
+        if (intervalId) clearInterval(intervalId);
+        if (timeoutId) clearTimeout(timeoutId);
       };
     } else {
       setPrintPhase('idle');
@@ -97,6 +97,15 @@ const TicketPrintAnimation = ({ isPrinting, onPrintComplete, onSkipAnimation }) 
               <i className="fas fa-print fa-2x mb-2"></i>
               <h4>Printing Ticket...</h4>
               <p>Please wait while your ticket is being printed</p>
+              {onSkipAnimation && (
+                <button 
+                  className="btn btn-warning btn-sm mt-3"
+                  onClick={onSkipAnimation}
+                >
+                  <i className="fas fa-forward me-1"></i>
+                  Skip Animation
+                </button>
+              )}
             </div>
           )}
           
@@ -119,15 +128,6 @@ const TicketPrintAnimation = ({ isPrinting, onPrintComplete, onSkipAnimation }) 
               ></div>
             </div>
             <div className="progress-text">{progress}%</div>
-            {onSkipAnimation && (
-              <button 
-                className="btn btn-sm btn-outline-secondary mt-2"
-                onClick={onSkipAnimation}
-                style={{ fontSize: '0.8rem' }}
-              >
-                Skip Animation
-              </button>
-            )}
           </div>
         )}
       </div>

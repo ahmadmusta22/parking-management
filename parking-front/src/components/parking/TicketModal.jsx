@@ -242,6 +242,14 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
                 <i className="fas fa-print me-1"></i>
                 Print
               </button>
+              <button 
+                type="button" 
+                className="btn btn-success btn-sm ms-2" 
+                onClick={handleSkipAnimation}
+              >
+                <i className="fas fa-print me-1"></i>
+                Print Now
+              </button>
             </div>
           </div>
         </div>
