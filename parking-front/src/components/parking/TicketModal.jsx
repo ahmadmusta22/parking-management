@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import TicketPrintAnimation from './TicketPrintAnimation';
+import React from 'react';
 import './TicketModal.css';
 
 const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
-  const [isPrinting, setIsPrinting] = useState(false);
 
   if (!ticket) return null;
 
@@ -13,37 +11,27 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
   // Find the gate information from the ticket's gateId
   const ticketGate = gate?.id === ticket.gateId ? gate : null;
 
-  // Debug logging for zone/category issue (removed)
+  // Debug logging for zone/category issue
+  console.log('TicketModal Debug:', {
+    ticket,
+    zones,
+    gate,
+    foundZone: zone,
+    foundGate: ticketGate
+  });
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();
   };
 
   const handlePrint = () => {
-    setIsPrinting(true);
-  };
-
-  const handlePrintComplete = () => {
-    setIsPrinting(false);
-    window.print();
-    if (onPrint) onPrint();
-  };
-
-  const handleSkipAnimation = () => {
-    setIsPrinting(false);
+    console.log('Print button clicked - opening print dialog');
     window.print();
     if (onPrint) onPrint();
   };
 
   return (
     <>
-      {/* Print Animation */}
-      <TicketPrintAnimation
-        isPrinting={isPrinting}
-        onPrintComplete={handlePrintComplete}
-        onSkipAnimation={handleSkipAnimation}
-      />
-
       {/* Printable Ticket Content - Hidden on screen, visible when printing */}
       <div className="ticket-print-content" style={{ display: 'none' }}>
         <div className="ticket-header">
@@ -119,8 +107,8 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
           maxHeight: 'calc(100vh - 12rem)',
           display: 'flex',
           flexDirection: 'column',
-          width: '70%',
-          maxWidth: '280px'
+          width: '90%',
+          maxWidth: '400px'
         }}>
           <div className="modal-content" style={{
             maxHeight: 'calc(100vh - 12rem)',
@@ -224,7 +212,11 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
             <div className="modal-footer" style={{
               flexShrink: 0,
               borderTop: '1px solid #dee2e6',
-              padding: '0.2rem'
+              padding: '0.5rem',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '0.5rem'
             }}>
               <button 
                 type="button" 
@@ -240,15 +232,7 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
                 onClick={handlePrint}
               >
                 <i className="fas fa-print me-1"></i>
-                Print
-              </button>
-              <button 
-                type="button" 
-                className="btn btn-success btn-sm ms-2" 
-                onClick={handleSkipAnimation}
-              >
-                <i className="fas fa-print me-1"></i>
-                Print Now
+                Print Ticket
               </button>
             </div>
           </div>

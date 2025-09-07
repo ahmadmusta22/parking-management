@@ -13,58 +13,60 @@ const originalConsole = {
 };
 
 // Override console methods to suppress output immediately
-console.log = () => {};
-console.warn = () => {};
-console.error = () => {};
-console.info = () => {};
-console.debug = () => {};
-console.trace = () => {};
-console.table = () => {};
-console.group = () => {};
-console.groupEnd = () => {};
-console.groupCollapsed = () => {};
-console.time = () => {};
-console.timeEnd = () => {};
-console.count = () => {};
-console.clear = () => {};
-console.dir = () => {};
-console.dirxml = () => {};
-console.assert = () => {};
-console.profile = () => {};
-console.profileEnd = () => {};
-console.timeStamp = () => {};
-console.markTimeline = () => {};
-console.timeline = () => {};
-console.timelineEnd = () => {};
+// TEMPORARILY DISABLED FOR DEBUGGING
+// console.log = () => {};
+// console.warn = () => {};
+// console.error = () => {};
+// console.info = () => {};
+// console.debug = () => {};
+// console.trace = () => {};
+// console.table = () => {};
+// console.group = () => {};
+// console.groupEnd = () => {};
+// console.groupCollapsed = () => {};
+// console.time = () => {};
+// console.timeEnd = () => {};
+// console.count = () => {};
+// console.clear = () => {};
+// console.dir = () => {};
+// console.dirxml = () => {};
+// console.assert = () => {};
+// console.profile = () => {};
+// console.profileEnd = () => {};
+// console.timeStamp = () => {};
+// console.markTimeline = () => {};
+// console.timeline = () => {};
+// console.timelineEnd = () => {};
 
 // Also override window.console to be extra sure
-if (typeof window !== 'undefined') {
-  window.console = {
-    log: () => {},
-    warn: () => {},
-    error: () => {},
-    info: () => {},
-    debug: () => {},
-    trace: () => {},
-    table: () => {},
-    group: () => {},
-    groupEnd: () => {},
-    groupCollapsed: () => {},
-    time: () => {},
-    timeEnd: () => {},
-    count: () => {},
-    clear: () => {},
-    dir: () => {},
-    dirxml: () => {},
-    assert: () => {},
-    profile: () => {},
-    profileEnd: () => {},
-    timeStamp: () => {},
-    markTimeline: () => {},
-    timeline: () => {},
-    timelineEnd: () => {}
-  };
-}
+// TEMPORARILY DISABLED FOR DEBUGGING
+// if (typeof window !== 'undefined') {
+//   window.console = {
+//     log: () => {},
+//     warn: () => {},
+//     error: () => {},
+//     info: () => {},
+//     debug: () => {},
+//     trace: () => {},
+//     table: () => {},
+//     group: () => {},
+//     groupEnd: () => {},
+//     groupCollapsed: () => {},
+//     time: () => {},
+//     timeEnd: () => {},
+//     count: () => {},
+//     clear: () => {},
+//     dir: () => {},
+//     dirxml: () => {},
+//     assert: () => {},
+//     profile: () => {},
+//     profileEnd: () => {},
+//     timeStamp: () => {},
+//     markTimeline: () => {},
+//     timeline: () => {},
+//     timelineEnd: () => {}
+//   };
+// }
 
 // Export function to restore console if needed
 export const restoreConsole = () => {
