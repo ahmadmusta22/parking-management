@@ -466,7 +466,7 @@ const GatePage = () => {
       {showTicketModal && (
         <TicketModal
           ticket={ticket}
-          zones={zones}
+          zones={zonesData}
           gate={currentGate}
           onClose={handleTicketModalClose}
         />
