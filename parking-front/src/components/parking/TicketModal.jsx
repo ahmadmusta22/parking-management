@@ -12,16 +12,7 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
   // Find the gate information from the ticket's gateId
   const ticketGate = gate?.id === ticket.gateId ? gate : null;
 
-  // Debug logging for zone/category issue
-  console.log('TicketModal Debug:', { 
-    ticket, 
-    zones, 
-    zone, 
-    gate, 
-    ticketGate,
-    ticketZoneId: ticket.zoneId,
-    zonesLength: zones?.length 
-  });
+  // Debug logging for zone/category issue (removed)
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();

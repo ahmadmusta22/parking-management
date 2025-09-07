@@ -129,7 +129,7 @@ class ErrorTracker {
       // - Rollbar
       // - LogRocket
       
-      console.log('Sending error to tracking service:', errorData);
+      // console.log('Sending error to tracking service:', errorData);
       
       // Example: Send to custom endpoint
       // await fetch('/api/errors', {
@@ -431,7 +431,7 @@ export const initializeErrorTracking = () => {
     setInterval(() => debugUtils.updateDebugPanel(panel), 5000);
   }
   
-  console.log('Error tracking initialized');
+  // console.log('Error tracking initialized');
 };
 
 // React Error Boundary

@@ -44,16 +44,16 @@ const useParkingStore = create(
   setGates: (gates) => set({ gates }),
   
   setZones: (zones) => {
-    console.log('Parking store: Setting zones:', zones);
+    // console.log('Parking store: Setting zones:', zones);
     set({ zones });
     // Update current gate zones if we have a current gate
     const { currentGate } = get();
-    console.log('Parking store: Current gate:', currentGate);
+    // console.log('Parking store: Current gate:', currentGate);
     if (currentGate) {
       const gateZones = zones.filter(zone => 
         zone.gateIds && zone.gateIds.includes(currentGate.id)
       );
-      console.log('Parking store: Filtered gate zones:', gateZones);
+      // console.log('Parking store: Filtered gate zones:', gateZones);
       set({ currentGateZones: gateZones });
     }
   },
@@ -107,7 +107,7 @@ const useParkingStore = create(
     
     // If reconnected, process pending updates
     if (connected && offlineMode && pendingUpdates.length > 0) {
-      console.log('Processing pending updates:', pendingUpdates.length);
+      // console.log('Processing pending updates:', pendingUpdates.length);
       // In a real implementation, you would send these to the server
       set({ 
         offlineMode: false,

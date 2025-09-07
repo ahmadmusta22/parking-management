@@ -141,7 +141,7 @@ export const handleCSPViolation = (event) => {
   // In production, send to monitoring service
   if (process.env.NODE_ENV === 'production') {
     // Send to error tracking service
-    console.log('CSP violation reported to monitoring service');
+    // console.log('CSP violation reported to monitoring service');
   }
 };
 

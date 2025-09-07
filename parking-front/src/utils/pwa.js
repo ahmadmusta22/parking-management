@@ -7,7 +7,7 @@ export const registerServiceWorker = async () => {
   if ('serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js');
-      console.log('Service Worker registered successfully:', registration);
+      // console.log('Service Worker registered successfully:', registration);
       
       // Handle updates
       registration.addEventListener('updatefound', () => {
@@ -41,7 +41,7 @@ export const pwaInstallation = {
     
     // Track app installation
     window.addEventListener('appinstalled', () => {
-      console.log('PWA was installed');
+      // console.log('PWA was installed');
       hideInstallButton();
     });
   },
@@ -67,7 +67,7 @@ export const pwaInstallation = {
     if (pwaInstallation.deferredPrompt) {
       pwaInstallation.deferredPrompt.prompt();
       const { outcome } = await pwaInstallation.deferredPrompt.userChoice;
-      console.log(`User response to install prompt: ${outcome}`);
+      // console.log(`User response to install prompt: ${outcome}`);
       pwaInstallation.deferredPrompt = null;
       hideInstallButton();
     }
@@ -82,14 +82,14 @@ export const offlineSupport = {
   // Handle online/offline events
   init: () => {
     window.addEventListener('online', () => {
-      console.log('Connection restored');
+      // console.log('Connection restored');
       showOnlineNotification();
       // Sync any pending data
       syncPendingData();
     });
     
     window.addEventListener('offline', () => {
-      console.log('Connection lost');
+      // console.log('Connection lost');
       showOfflineNotification();
     });
   },
@@ -107,7 +107,7 @@ export const offlineSupport = {
       
       try {
         await cache.addAll(criticalResources);
-        console.log('Critical resources cached');
+        // console.log('Critical resources cached');
       } catch (error) {
         console.error('Failed to cache critical resources:', error);
       }
@@ -252,7 +252,7 @@ export const pushNotifications = {
             userVisibleOnly: true,
             applicationServerKey: 'your-vapid-public-key' // Replace with actual key
           });
-          console.log('Push subscription created:', newSubscription);
+          // console.log('Push subscription created:', newSubscription);
         }
       } catch (error) {
         console.error('Push notification setup failed:', error);
@@ -317,7 +317,7 @@ export const backgroundSync = {
       if (response) {
         const data = await response.json();
         // Process the data
-        console.log('Background sync data:', data);
+        // console.log('Background sync data:', data);
         await cache.delete('parking-sync');
       }
     }
@@ -346,7 +346,7 @@ export const initializePWA = async () => {
   // Initialize push notifications
   await pushNotifications.init();
   
-  console.log('PWA features initialized');
+  // console.log('PWA features initialized');
 };
 
 // Utility functions
@@ -365,17 +365,17 @@ const showUpdateNotification = () => {
 
 const showOnlineNotification = () => {
   // Show online status
-  console.log('Back online');
+  // console.log('Back online');
 };
 
 const showOfflineNotification = () => {
   // Show offline status
-  console.log('Offline mode');
+  // console.log('Offline mode');
 };
 
 const syncPendingData = () => {
   // Sync any data that was queued while offline
-  console.log('Syncing pending data');
+  // console.log('Syncing pending data');
 };
 
 const hideInstallButton = () => {

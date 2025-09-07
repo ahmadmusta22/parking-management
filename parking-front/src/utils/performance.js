@@ -9,7 +9,7 @@ export const measureWebVitals = () => {
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       const lastEntry = entries[entries.length - 1];
-      console.log('LCP:', lastEntry.startTime);
+      // console.log('LCP:', lastEntry.startTime);
       
       // Report to analytics
       if (window.gtag) {
@@ -27,7 +27,7 @@ export const measureWebVitals = () => {
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       entries.forEach((entry) => {
-        console.log('FID:', entry.processingStart - entry.startTime);
+        // console.log('FID:', entry.processingStart - entry.startTime);
         
         if (window.gtag) {
           window.gtag('event', 'web_vitals', {
@@ -49,7 +49,7 @@ export const measureWebVitals = () => {
           clsValue += entry.value;
         }
       }
-      console.log('CLS:', clsValue);
+      // console.log('CLS:', clsValue);
       
       if (window.gtag) {
         window.gtag('event', 'web_vitals', {
@@ -77,11 +77,11 @@ export const measureBundleSize = () => {
       const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
       const domContentLoaded = navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart;
       
-      console.log('Performance Metrics:', {
-        loadTime: Math.round(loadTime),
-        domContentLoaded: Math.round(domContentLoaded),
-        totalTime: Math.round(navigation.loadEventEnd - navigation.fetchStart)
-      });
+      // console.log('Performance Metrics:', {
+      //   loadTime: Math.round(loadTime),
+      //   domContentLoaded: Math.round(domContentLoaded),
+      //   totalTime: Math.round(navigation.loadEventEnd - navigation.fetchStart)
+      // });
       
       // Report to analytics
       if (window.gtag) {
@@ -99,11 +99,11 @@ export const measureBundleSize = () => {
 export const measureMemoryUsage = () => {
   if (typeof window !== 'undefined' && 'memory' in performance) {
     const memory = performance.memory;
-    console.log('Memory Usage:', {
-      used: Math.round(memory.usedJSHeapSize / 1024 / 1024) + ' MB',
-      total: Math.round(memory.totalJSHeapSize / 1024 / 1024) + ' MB',
-      limit: Math.round(memory.jsHeapSizeLimit / 1024 / 1024) + ' MB'
-    });
+    // console.log('Memory Usage:', {
+    //   used: Math.round(memory.usedJSHeapSize / 1024 / 1024) + ' MB',
+    //   total: Math.round(memory.totalJSHeapSize / 1024 / 1024) + ' MB',
+    //   limit: Math.round(memory.jsHeapSizeLimit / 1024 / 1024) + ' MB'
+    // });
     
     // Alert if memory usage is high
     const usagePercent = (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100;
@@ -116,7 +116,7 @@ export const measureMemoryUsage = () => {
 // API performance monitoring
 export const measureAPIPerformance = (url, startTime, endTime) => {
   const duration = endTime - startTime;
-  console.log(`API Call: ${url} - ${Math.round(duration)}ms`);
+  // console.log(`API Call: ${url} - ${Math.round(duration)}ms`);
   
   // Report slow API calls
   if (duration > 3000) {
@@ -136,7 +136,7 @@ export const measureAPIPerformance = (url, startTime, endTime) => {
 // Component render performance
 export const measureComponentRender = (componentName, startTime, endTime) => {
   const duration = endTime - startTime;
-  console.log(`Component Render: ${componentName} - ${Math.round(duration)}ms`);
+  // console.log(`Component Render: ${componentName} - ${Math.round(duration)}ms`);
   
   // Report slow renders
   if (duration > 100) {
@@ -148,12 +148,12 @@ export const measureComponentRender = (componentName, startTime, endTime) => {
 export const measureNetworkPerformance = () => {
   if (typeof window !== 'undefined' && 'connection' in navigator) {
     const connection = navigator.connection;
-    console.log('Network Info:', {
-      effectiveType: connection.effectiveType,
-      downlink: connection.downlink + ' Mbps',
-      rtt: connection.rtt + ' ms',
-      saveData: connection.saveData
-    });
+    // console.log('Network Info:', {
+    //   effectiveType: connection.effectiveType,
+    //   downlink: connection.downlink + ' Mbps',
+    //   rtt: connection.rtt + ' ms',
+    //   saveData: connection.saveData
+    // });
     
     // Report to analytics
     if (window.gtag) {
@@ -209,7 +209,7 @@ export const reportPerformanceMetrics = (metrics) => {
   // In production, send to monitoring service
   if (process.env.NODE_ENV === 'production') {
     // Example: Send to monitoring service
-    console.log('Reporting performance metrics:', metrics);
+    // console.log('Reporting performance metrics:', metrics);
     
     // You could integrate with services like:
     // - Google Analytics

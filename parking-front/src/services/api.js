@@ -41,8 +41,7 @@ api.interceptors.request.use(
 // Response interceptor for error handling and security
 api.interceptors.response.use(
   (response) => {
-    // Log successful responses for monitoring
-    console.log(`API Success: ${response.config.method?.toUpperCase()} ${response.config.url}`);
+    // Log successful responses for monitoring (removed)
     return response;
   },
   (error) => {

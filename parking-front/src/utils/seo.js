@@ -371,7 +371,7 @@ export const initializeSEO = () => {
     'og:image': `${window.location.origin}/assets/img/og-image.jpg`
   });
   
-  console.log('SEO features initialized');
+  // console.log('SEO features initialized');
 };
 
 // Page-specific SEO setup

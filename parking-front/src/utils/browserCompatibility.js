@@ -278,8 +278,8 @@ export const websocketCompatibility = {
       // Return a mock WebSocket that uses polling
       return {
         readyState: 0,
-        send: () => console.log('WebSocket fallback: send not implemented'),
-        close: () => console.log('WebSocket fallback: close not implemented'),
+        send: () => {}, // console.log('WebSocket fallback: send not implemented'),
+        close: () => {}, // console.log('WebSocket fallback: close not implemented'),
         addEventListener: () => {},
         removeEventListener: () => {}
       };
@@ -371,17 +371,17 @@ export const initializeCompatibility = () => {
   cssCompatibility.fixCSSGrid();
   
   // Log browser information
-  console.log('Browser Info:', {
-    browser: browserInfo.getBrowser(),
-    version: browserInfo.getVersion(),
-    features: {
-      webSocket: browserInfo.supports.webSocket(),
-      localStorage: browserInfo.supports.localStorage(),
-      fetch: browserInfo.supports.fetch(),
-      cssGrid: browserInfo.supports.cssGrid(),
-      flexbox: browserInfo.supports.flexbox()
-    }
-  });
+  // console.log('Browser Info:', {
+  //   browser: browserInfo.getBrowser(),
+  //   version: browserInfo.getVersion(),
+  //   features: {
+  //     webSocket: browserInfo.supports.webSocket(),
+  //     localStorage: browserInfo.supports.localStorage(),
+  //     fetch: browserInfo.supports.fetch(),
+  //     cssGrid: browserInfo.supports.cssGrid(),
+  //     flexbox: browserInfo.supports.flexbox()
+  //   }
+  // });
 };
 
 // Browser-specific fixes

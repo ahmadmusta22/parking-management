@@ -30,18 +30,18 @@ const CheckpointPage = () => {
 
   // Redirect if not authenticated or not an employee
   useEffect(() => {
-    console.log('CheckpointPage: isAuthenticated:', isAuthenticated);
-    console.log('CheckpointPage: user:', user);
-    console.log('CheckpointPage: user role:', user?.role);
+    // console.log('CheckpointPage: isAuthenticated:', isAuthenticated);
+    // console.log('CheckpointPage: user:', user);
+    // console.log('CheckpointPage: user role:', user?.role);
     
     if (!isAuthenticated || user?.role !== 'employee') {
-      console.log('CheckpointPage: Redirecting to login');
+      // console.log('CheckpointPage: Redirecting to login');
       navigate('/login', { 
         state: { from: { pathname: '/checkpoint' } },
         replace: true 
       });
     } else {
-      console.log('CheckpointPage: User is authenticated employee, staying on page');
+      // console.log('CheckpointPage: User is authenticated employee, staying on page');
     }
   }, [isAuthenticated, user, navigate]);
 
