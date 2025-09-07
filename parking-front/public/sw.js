@@ -20,27 +20,27 @@ const API_ENDPOINTS = [
 
 // Install event
 self.addEventListener('install', (event) => {
-  console.log('Service Worker installing...');
+  // console.log('Service Worker installing...');
   
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Caching critical resources');
+        // console.log('Caching critical resources');
         return cache.addAll(CRITICAL_RESOURCES);
       })
       .then(() => {
-        console.log('Service Worker installed');
+        // console.log('Service Worker installed');
         return self.skipWaiting();
       })
       .catch((error) => {
-        console.error('Service Worker installation failed:', error);
+        // console.error('Service Worker installation failed:', error);
       })
   );
 });
 
 // Activate event
 self.addEventListener('activate', (event) => {
-  console.log('Service Worker activating...');
+  // console.log('Service Worker activating...');
   
   event.waitUntil(
     caches.keys()
@@ -48,14 +48,14 @@ self.addEventListener('activate', (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheName !== CACHE_NAME && cacheName !== API_CACHE_NAME) {
-              console.log('Deleting old cache:', cacheName);
+              // console.log('Deleting old cache:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
       })
       .then(() => {
-        console.log('Service Worker activated');
+        // console.log('Service Worker activated');
         return self.clients.claim();
       })
   );
@@ -121,7 +121,7 @@ async function handleAPIRequest(request) {
     }
     return response;
   } catch (error) {
-    console.error('API request failed:', error);
+    // console.error('API request failed:', error);
     return new Response(
       JSON.stringify({ error: 'Network unavailable' }),
       { status: 503, headers: { 'Content-Type': 'application/json' } }
@@ -145,7 +145,7 @@ async function handleStaticResource(request) {
     }
     return response;
   } catch (error) {
-    console.error('Static resource fetch failed:', error);
+    // console.error('Static resource fetch failed:', error);
     return new Response('Resource not available offline', { status: 503 });
   }
 }
@@ -172,7 +172,7 @@ async function handleNavigation(request) {
 
 // Background sync
 self.addEventListener('sync', (event) => {
-  console.log('Background sync triggered:', event.tag);
+  // console.log('Background sync triggered:', event.tag);
   
   if (event.tag === 'parking-sync') {
     event.waitUntil(handleBackgroundSync());
@@ -189,20 +189,20 @@ async function handleBackgroundSync() {
         const response = await fetch(request);
         if (response.ok) {
           await cache.delete(request);
-          console.log('Background sync successful for:', request.url);
+          // console.log('Background sync successful for:', request.url);
         }
       } catch (error) {
-        console.error('Background sync failed for:', request.url, error);
+        // console.error('Background sync failed for:', request.url, error);
       }
     }
   } catch (error) {
-    console.error('Background sync error:', error);
+    // console.error('Background sync error:', error);
   }
 }
 
 // Push notifications
 self.addEventListener('push', (event) => {
-  console.log('Push notification received');
+  // console.log('Push notification received');
   
   const options = {
     body: 'New parking update available',
@@ -240,7 +240,7 @@ self.addEventListener('push', (event) => {
 
 // Notification click
 self.addEventListener('notificationclick', (event) => {
-  console.log('Notification clicked:', event.action);
+  // console.log('Notification clicked:', event.action);
   
   event.notification.close();
   
@@ -260,7 +260,7 @@ self.addEventListener('notificationclick', (event) => {
 
 // Message handling
 self.addEventListener('message', (event) => {
-  console.log('Service Worker received message:', event.data);
+  // console.log('Service Worker received message:', event.data);
   
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
@@ -273,9 +273,9 @@ self.addEventListener('message', (event) => {
 
 // Error handling
 self.addEventListener('error', (event) => {
-  console.error('Service Worker error:', event.error);
+  // console.error('Service Worker error:', event.error);
 });
 
 self.addEventListener('unhandledrejection', (event) => {
-  console.error('Service Worker unhandled rejection:', event.reason);
+  // console.error('Service Worker unhandled rejection:', event.reason);
 });
