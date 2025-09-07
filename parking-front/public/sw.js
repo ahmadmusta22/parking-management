@@ -102,7 +102,7 @@ async function handleAPIRequest(request) {
     // Return cached response and update in background
     fetch(request)
       .then((response) => {
-        if (response.ok) {
+        if (response.ok && request.method === 'GET') {
           cache.put(request, response.clone());
         }
       })
@@ -116,7 +116,8 @@ async function handleAPIRequest(request) {
   // No cache, fetch from network
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    // Only cache GET requests (Cache API doesn't support PUT/POST/DELETE)
+    if (response.ok && request.method === 'GET') {
       cache.put(request, response.clone());
     }
     return response;
@@ -140,7 +141,7 @@ async function handleStaticResource(request) {
   
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    if (response.ok && request.method === 'GET') {
       cache.put(request, response.clone());
     }
     return response;
@@ -157,7 +158,7 @@ async function handleNavigation(request) {
   
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    if (response.ok && request.method === 'GET') {
       cache.put(request, response.clone());
     }
     return response;

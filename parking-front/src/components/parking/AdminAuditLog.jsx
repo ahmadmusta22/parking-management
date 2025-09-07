@@ -9,6 +9,10 @@ const AdminAuditLog = () => {
   const [sortOrder, setSortOrder] = useState('newest');
   const [autoRefresh, setAutoRefresh] = useState(true);
 
+  // Debug logging
+  console.log('AdminAuditLog render - adminAuditLog:', adminAuditLog);
+  console.log('AdminAuditLog render - adminAuditLog.length:', adminAuditLog?.length);
+
   // Filter and sort audit entries
   const filteredEntries = useMemo(() => {
     let filtered = adminAuditLog;
@@ -121,7 +125,6 @@ const AdminAuditLog = () => {
         <h4>
           <i className="fas fa-history me-2"></i>
           Admin Audit Log
-          <span className="badge">{filteredEntries.length} entries</span>
         </h4>
         <p className="mb-0 opacity-75">
           Real-time updates from admin actions
@@ -210,7 +213,6 @@ const AdminAuditLog = () => {
             </label>
           </div>
         </div>
-      </div>
       </div>
 
       {/* Audit entries */}
