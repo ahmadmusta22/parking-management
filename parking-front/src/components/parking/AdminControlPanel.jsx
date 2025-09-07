@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { adminAPI, masterAPI } from '../../services/api';
 import useParkingStore from '../../store/parkingStore';
 import useAuthStore from '../../store/authStore';
+import useToast from '../../hooks/useToast';
 
 const AdminControlPanel = () => {
   const [selectedZone, setSelectedZone] = useState(null);
@@ -17,6 +18,7 @@ const AdminControlPanel = () => {
   const queryClient = useQueryClient();
   const { addAdminAuditEntry } = useParkingStore();
   const { user } = useAuthStore();
+  const { showWarning } = useToast();
 
   // Fetch data
   const { data: zones } = useQuery({
@@ -80,7 +82,7 @@ const AdminControlPanel = () => {
   const createRushHourMutation = {
     mutate: (data) => {
       console.warn('Rush hour creation not supported by backend');
-      alert('Rush hour creation is not supported by the current backend. This feature is for demonstration purposes only.');
+      showWarning('Rush hour creation is not supported by the current backend. This feature is for demonstration purposes only.');
     },
     isPending: false
   };
@@ -88,7 +90,7 @@ const AdminControlPanel = () => {
   const createVacationMutation = {
     mutate: (data) => {
       console.warn('Vacation creation not supported by backend');
-      alert('Vacation creation is not supported by the current backend. This feature is for demonstration purposes only.');
+      showWarning('Vacation creation is not supported by the current backend. This feature is for demonstration purposes only.');
     },
     isPending: false
   };
