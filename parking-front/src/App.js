@@ -7,7 +7,6 @@ import { initializePerformanceMonitoring } from './utils/performance';
 import { initializeAccessibility } from './utils/accessibility';
 import { initializeAllCompatibility } from './utils/browserCompatibility';
 import { initializePWA } from './utils/pwa';
-import { initializeSEO } from './utils/seo';
 import { initializeErrorTracking, ErrorBoundary } from './utils/errorTracking';
 import HomePageOne from "./pages/HomePageOne";
 import RouteScrollToTop from "./helper/RouteScrollToTop";
@@ -47,7 +46,6 @@ function App() {
     initializePerformanceMonitoring();
     initializeAccessibility();
     initializeAllCompatibility();
-    initializeSEO();
     initializeErrorTracking();
     
     // Initialize PWA features
