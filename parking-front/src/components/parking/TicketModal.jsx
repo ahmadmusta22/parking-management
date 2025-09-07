@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import TicketPrintAnimation from './TicketPrintAnimation';
 
-const TicketModal = ({ ticket, zone, gate, onClose, onPrint }) => {
+const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
   const [isPrinting, setIsPrinting] = useState(false);
 
   if (!ticket) return null;
+
+  // Find the zone information from the ticket's zoneId
+  const zone = zones?.find(z => z.id === ticket.zoneId);
+  
+  // Find the gate information from the ticket's gateId
+  const ticketGate = gate?.id === ticket.gateId ? gate : null;
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();
@@ -105,7 +111,7 @@ const TicketModal = ({ ticket, zone, gate, onClose, onPrint }) => {
                     <div className="col-6">
                       <div className="detail-item">
                         <label className="detail-label">Gate</label>
-                        <div className="detail-value">{gate?.name || 'N/A'}</div>
+                        <div className="detail-value">{ticketGate?.name || gate?.name || 'N/A'}</div>
                       </div>
                     </div>
                     <div className="col-6">
