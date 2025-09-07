@@ -33,7 +33,7 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.error('Request interceptor error:', error);
+    // console.error('Request interceptor error:', error);
     return Promise.reject(error);
   }
 );
@@ -46,12 +46,12 @@ api.interceptors.response.use(
   },
   (error) => {
     // Enhanced error handling with security considerations
-    console.error('API Error:', {
-      status: error.response?.status,
-      url: error.config?.url,
-      method: error.config?.method,
-      message: error.message
-    });
+    // console.error('API Error:', {
+    //   status: error.response?.status,
+    //   url: error.config?.url,
+    //   method: error.config?.method,
+    //   message: error.message
+    // });
 
     if (error.response?.status === 401) {
       // Clear sensitive data
@@ -62,9 +62,9 @@ api.interceptors.response.use(
       // Redirect to login with security
       window.location.replace('/login');
     } else if (error.response?.status === 403) {
-      console.warn('Access forbidden - insufficient permissions');
+      // console.warn('Access forbidden - insufficient permissions');
     } else if (error.response?.status >= 500) {
-      console.error('Server error - please try again later');
+      // console.error('Server error - please try again later');
     }
     
     return Promise.reject(error);

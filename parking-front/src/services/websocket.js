@@ -43,7 +43,7 @@ class WebSocketService {
           const message = JSON.parse(event.data);
           this.emit(message.type, message.payload);
         } catch (error) {
-          console.error('Error parsing WebSocket message:', error);
+          // console.error('Error parsing WebSocket message:', error);
         }
       };
 
@@ -59,11 +59,11 @@ class WebSocketService {
       };
 
       this.ws.onerror = (error) => {
-        console.error('WebSocket error:', error);
+        // console.error('WebSocket error:', error);
         this.emit('error', error);
       };
     } catch (error) {
-      console.error('Failed to create WebSocket connection:', error);
+      // console.error('Failed to create WebSocket connection:', error);
     }
   }
 
@@ -83,7 +83,7 @@ class WebSocketService {
     };
 
     if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
-      console.warn('WebSocket not connected, queuing subscription');
+      // console.warn('WebSocket not connected, queuing subscription');
       this.pendingMessages.push(message);
       this.subscriptions.add(gateId);
       return;
@@ -130,7 +130,7 @@ class WebSocketService {
         try {
           callback(data);
         } catch (error) {
-          console.error('Error in WebSocket event callback:', error);
+          // console.error('Error in WebSocket event callback:', error);
         }
       });
     }
