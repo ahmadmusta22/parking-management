@@ -18,7 +18,9 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
     zones,
     zone,
     gate,
-    ticketGate
+    ticketGate,
+    ticketZoneId: ticket.zoneId,
+    ticketGateId: ticket.gateId
   });
 
   const formatDate = (dateString) => {
@@ -54,15 +56,15 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
         overflow: 'auto'
       }}>
         <div className="modal-dialog" style={{
-          margin: '3rem auto',
-          maxHeight: 'calc(100vh - 6rem)',
+          margin: '4rem auto',
+          maxHeight: 'calc(100vh - 8rem)',
           display: 'flex',
           flexDirection: 'column',
-          width: '85%',
-          maxWidth: '400px'
+          width: '80%',
+          maxWidth: '350px'
         }}>
           <div className="modal-content" style={{
-            maxHeight: 'calc(100vh - 6rem)',
+            maxHeight: 'calc(100vh - 8rem)',
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column'
@@ -82,8 +84,8 @@ const TicketModal = ({ ticket, zones, gate, onClose, onPrint }) => {
             <div className="modal-body" style={{
               overflow: 'auto',
               flex: 1,
-              padding: '0.5rem',
-              maxHeight: 'calc(100vh - 10rem)'
+              padding: '0.25rem',
+              maxHeight: 'calc(100vh - 12rem)'
             }}>
               <div className="ticket-content">
                 {/* Ticket Header */}
