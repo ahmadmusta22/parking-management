@@ -168,6 +168,10 @@ const useParkingStore = create(
     set({ adminAuditLog: updatedLog });
   },
   
+  clearAdminAuditLog: () => {
+    set({ adminAuditLog: [] });
+  },
+  
   setLoading: (key, loading) => {
     const { loading: currentLoading } = get();
     set({ 

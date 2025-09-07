@@ -6,6 +6,7 @@ import AdminReports from '../components/parking/AdminReports';
 import AdminControlPanel from '../components/parking/AdminControlPanel';
 import AdminEmployees from '../components/parking/AdminEmployees';
 import AdminSubscriptions from '../components/parking/AdminSubscriptions';
+import AdminAuditLog from '../components/parking/AdminAuditLog';
 import Preloader from '../helper/Preloader';
 import useAuthStore from '../store/authStore';
 import useParkingStore from '../store/parkingStore';
@@ -150,73 +151,7 @@ const AdminPage = () => {
 
           {activeTab === 'audit' && (
             <div className="tab-pane active">
-              <div className="audit-log">
-                <div className="d-flex justify-content-between align-items-center mb-4">
-                  <h4>
-                    <i className="fas fa-history me-2"></i>
-                    Admin Audit Log
-                  </h4>
-                  <small className="text-muted">
-                    Real-time updates from admin actions
-                  </small>
-                </div>
-
-                {adminAuditLog.length === 0 ? (
-                  <div className="text-center py-5">
-                    <i className="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
-                    <h5 className="text-muted">No admin actions yet</h5>
-                    <p className="text-muted">Admin actions will appear here in real-time</p>
-                  </div>
-                ) : (
-                  <div className="audit-entries">
-                    {adminAuditLog.map((entry) => (
-                      <div key={entry.id} className="audit-entry card mb-3">
-                        <div className="card-body">
-                          <div className="row align-items-center">
-                            <div className="col-md-8">
-                              <div className="d-flex align-items-center mb-2">
-                                <span className={`badge me-2 ${
-                                  entry.action.includes('zone') ? 'bg-primary' :
-                                  entry.action.includes('category') ? 'bg-info' :
-                                  entry.action.includes('rush') ? 'bg-warning' :
-                                  entry.action.includes('vacation') ? 'bg-success' :
-                                  'bg-secondary'
-                                }`}>
-                                  {entry.action.replace(/-/g, ' ').toUpperCase()}
-                                </span>
-                                <span className="text-muted small">
-                                  {entry.targetType}: {entry.targetId}
-                                </span>
-                              </div>
-                              <div className="audit-details">
-                                {entry.details && Object.keys(entry.details).length > 0 && (
-                                  <div className="details">
-                                    {Object.entries(entry.details).map(([key, value]) => (
-                                      <span key={key} className="badge bg-light text-dark me-1">
-                                        {key}: {value}
-                                      </span>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                            <div className="col-md-4 text-md-end">
-                              <div className="audit-meta">
-                                <div className="text-muted small">
-                                  Admin: {entry.adminId}
-                                </div>
-                                <div className="text-muted small">
-                                  {new Date(entry.timestamp).toLocaleString()}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <AdminAuditLog />
             </div>
           )}
         </div>
