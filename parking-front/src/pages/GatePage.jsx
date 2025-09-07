@@ -70,6 +70,7 @@ const GatePage = () => {
       return masterAPI.getZones(gateId);
     },
     select: (response) => {
+      // console.log('Zones API response:', response);
       return response.data;
     },
     enabled: !!gateId
@@ -254,6 +255,11 @@ const GatePage = () => {
   }
 
   // Debug info removed to reduce console spam
+  // console.log('GatePage render - gatesData:', gatesData);
+  // console.log('GatePage render - zonesData:', zonesData);
+  // console.log('GatePage render - zonesError:', zonesError);
+  // console.log('GatePage render - currentGate:', currentGate);
+  // console.log('GatePage render - currentGateZones:', currentGateZones);
 
   return (
     <>
