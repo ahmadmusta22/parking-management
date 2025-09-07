@@ -28,9 +28,30 @@ const TicketModal = ({ ticket, zone, gate, onClose, onPrint }) => {
         onPrintComplete={handlePrintComplete}
       />
 
-      <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-        <div className="modal-dialog modal-lg">
-          <div className="modal-content">
+      <div className="modal fade show d-block" style={{ 
+        backgroundColor: 'rgba(0,0,0,0.5)', 
+        zIndex: 9999,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        overflow: 'auto'
+      }}>
+        <div className="modal-dialog modal-lg" style={{
+          margin: '1rem auto',
+          maxHeight: 'calc(100vh - 2rem)',
+          display: 'flex',
+          flexDirection: 'column',
+          width: '90%',
+          maxWidth: '600px'
+        }}>
+          <div className="modal-content" style={{
+            maxHeight: 'calc(100vh - 2rem)',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
             <div className="modal-header">
               <h5 className="modal-title">
                 <i className="fas fa-ticket-alt me-2"></i>
@@ -43,7 +64,11 @@ const TicketModal = ({ ticket, zone, gate, onClose, onPrint }) => {
               ></button>
             </div>
             
-            <div className="modal-body">
+            <div className="modal-body" style={{
+              overflow: 'auto',
+              flex: 1,
+              padding: '1rem'
+            }}>
               <div className="ticket-content">
                 {/* Ticket Header */}
                 <div className="text-center mb-4">
@@ -98,18 +123,18 @@ const TicketModal = ({ ticket, zone, gate, onClose, onPrint }) => {
                 </div>
 
                 {/* QR Code Placeholder */}
-                <div className="ticket-qr text-center mt-4">
-                  <div className="qr-placeholder">
-                    <i className="fas fa-qrcode fa-3x text-muted"></i>
-                    <div className="qr-text">QR Code</div>
+                <div className="ticket-qr text-center mt-3">
+                  <div className="qr-placeholder" style={{ padding: '1rem' }}>
+                    <i className="fas fa-qrcode fa-2x text-muted"></i>
+                    <div className="qr-text small">QR Code</div>
                   </div>
                 </div>
 
                 {/* Instructions */}
-                <div className="ticket-instructions mt-4">
-                  <div className="alert alert-info">
-                    <h6><i className="fas fa-info-circle me-2"></i>Important Instructions</h6>
-                    <ul className="mb-0">
+                <div className="ticket-instructions mt-3">
+                  <div className="alert alert-info small">
+                    <h6 className="small"><i className="fas fa-info-circle me-2"></i>Important Instructions</h6>
+                    <ul className="mb-0 small">
                       <li>Keep this ticket safe - you'll need it to exit</li>
                       <li>Present this ticket at the checkpoint when leaving</li>
                       <li>Do not lose this ticket - replacement fees may apply</li>
@@ -119,7 +144,11 @@ const TicketModal = ({ ticket, zone, gate, onClose, onPrint }) => {
               </div>
             </div>
             
-            <div className="modal-footer">
+            <div className="modal-footer" style={{
+              flexShrink: 0,
+              borderTop: '1px solid #dee2e6',
+              padding: '1rem'
+            }}>
               <button 
                 type="button" 
                 className="btn btn-secondary" 
