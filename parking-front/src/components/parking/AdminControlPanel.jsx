@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { adminAPI, masterAPI } from '../../services/api';
+import useParkingStore from '../../store/parkingStore';
+import useAuthStore from '../../store/authStore';
 
 const AdminControlPanel = () => {
   const [selectedZone, setSelectedZone] = useState(null);
@@ -13,6 +15,8 @@ const AdminControlPanel = () => {
   const [showVacationModal, setShowVacationModal] = useState(false);
 
   const queryClient = useQueryClient();
+  const { addAdminAuditEntry } = useParkingStore();
+  const { user } = useAuthStore();
 
   // Fetch data
   const { data: zones } = useQuery({
@@ -35,7 +39,19 @@ const AdminControlPanel = () => {
   // Mutations
   const updateZoneMutation = useMutation({
     mutationFn: ({ zoneId, open }) => adminAPI.updateZoneOpen(zoneId, { open }),
-    onSuccess: () => {
+    onSuccess: (response, { zoneId, open }) => {
+      // Log audit entry
+      addAdminAuditEntry({
+        adminId: user?.id || 'admin',
+        action: 'UPDATE_ZONE',
+        targetType: 'zone',
+        targetId: zoneId,
+        details: {
+          updatedFields: ['open'],
+          newValues: { open }
+        }
+      });
+      
       queryClient.invalidateQueries(['zones']);
       setShowZoneModal(false);
     }
@@ -43,7 +59,19 @@ const AdminControlPanel = () => {
 
   const updateCategoryMutation = useMutation({
     mutationFn: ({ categoryId, data }) => adminAPI.updateCategory(categoryId, data),
-    onSuccess: () => {
+    onSuccess: (response, { categoryId, data }) => {
+      // Log audit entry
+      addAdminAuditEntry({
+        adminId: user?.id || 'admin',
+        action: 'UPDATE_CATEGORY',
+        targetType: 'category',
+        targetId: categoryId,
+        details: {
+          updatedFields: Object.keys(data),
+          newValues: data
+        }
+      });
+      
       queryClient.invalidateQueries(['categories']);
       setShowCategoryModal(false);
     }
