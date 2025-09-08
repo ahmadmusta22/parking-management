@@ -81,11 +81,28 @@
       debugPanel.remove();
     }
     
-    // Remove debug button
-    const debugButton = document.querySelector('button[style*="position: fixed"][style*="top: 10px"][style*="right: 10px"]');
-    if (debugButton && debugButton.textContent === 'Debug') {
-      debugButton.remove();
+    // Remove debug button - multiple selectors
+    const debugButton1 = document.querySelector('button[style*="position: fixed"][style*="top: 10px"][style*="right: 10px"]');
+    if (debugButton1 && debugButton1.textContent === 'Debug') {
+      debugButton1.remove();
     }
+    
+    const debugButton2 = document.querySelector('button[style*="z-index: 10001"]');
+    if (debugButton2 && debugButton2.textContent === 'Debug') {
+      debugButton2.remove();
+    }
+    
+    // Remove any button with "Debug" text in top-right corner
+    const allButtons = document.querySelectorAll('button');
+    allButtons.forEach(btn => {
+      if (btn.textContent === 'Debug' && 
+          (btn.style.position === 'fixed' || 
+           btn.style.zIndex === '10001' ||
+           btn.style.top === '10px' ||
+           btn.style.right === '10px')) {
+        btn.remove();
+      }
+    });
   }
   
   // Run immediately and also on DOM ready
@@ -93,4 +110,7 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', removeDebugElements);
   }
+  
+  // Also run periodically to catch any dynamically added debug elements
+  setInterval(removeDebugElements, 1000);
 })();

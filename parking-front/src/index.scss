@@ -2738,6 +2738,127 @@ body.offline-mode {
 /* Mobile-First Responsive Design */
 
 /* All mobile devices - add body padding for fixed navbar */
+/* Hero Section Fix - Add padding for fixed navbar */
+.hero-wrapper {
+  padding-top: 120px !important;
+}
+
+@media (max-width: 768px) {
+  .hero-wrapper {
+    padding-top: 100px !important;
+  }
+}
+
+/* About Section Centering Fix */
+.about-area-1 {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .row {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-content-wrap {
+    text-align: center;
+    
+    .title-area {
+      text-align: center;
+      margin: 0 auto;
+    }
+    
+    .checklist {
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-area-1 {
+    .about-content-wrap {
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
+}
+
+/* Footer Content Centering Fix */
+.footer-wrapper {
+  .widget-area {
+    .row {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .widget {
+      text-align: center;
+      margin-bottom: 30px;
+      
+      .widget_title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .menu {
+        text-align: center;
+        
+        li {
+          display: inline-block;
+          margin: 0 15px 10px 0;
+        }
+      }
+    }
+  }
+  
+  .copyright-wrap {
+    text-align: center;
+    
+    .row {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .footer-links {
+      text-align: center;
+      margin-top: 15px;
+      
+      a {
+        display: inline-block;
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-wrapper {
+    .widget-area {
+      .widget {
+        .menu {
+          li {
+            display: block;
+            margin: 0 0 10px 0;
+          }
+        }
+      }
+    }
+    
+    .copyright-wrap {
+      .footer-links {
+        a {
+          display: block;
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   body {
     padding-top: 80px;
