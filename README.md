@@ -57,6 +57,36 @@ A comprehensive, production-ready parking reservation system built with React, N
 - **jest-axe** - Accessibility testing
 - **User Event** - User interaction testing
 
+## 🎬 Demo & Screenshots
+
+### 📱 System Overview
+![System Overview](docs/demo-gifs/system-overview.gif)
+*Complete parking system demonstration*
+
+### 🚪 Gate Operations
+![Gate Check-in](docs/demo-gifs/gate-checkin.gif)
+*Visitor and subscriber check-in process*
+
+### 🏢 Employee Checkpoint
+![Checkpoint Process](docs/demo-gifs/checkpoint-process.gif)
+*Employee checkout and payment processing*
+
+### 👨‍💼 Admin Dashboard
+![Admin Dashboard](docs/demo-gifs/admin-dashboard.gif)
+*Administrative controls and real-time monitoring*
+
+### 🔄 Real-time Updates
+![Real-time Updates](docs/demo-gifs/realtime-updates.gif)
+*Live WebSocket updates across all clients*
+
+### 📱 Mobile Responsive
+![Mobile Experience](docs/demo-gifs/mobile-responsive.gif)
+*Mobile-optimized interface*
+
+### 🎫 Ticket Generation
+![Ticket Printing](docs/demo-gifs/ticket-printing.gif)
+*Professional ticket generation and printing*
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -272,6 +302,33 @@ parking-reservations-system/
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+## 📸 Creating Demo GIFs
+
+### Recommended GIF Creation Tools
+- **ScreenToGif** (Windows) - Free, lightweight screen recorder
+- **LICEcap** (Cross-platform) - Simple screen capture tool
+- **Kap** (Mac) - Modern screen recorder
+- **Peek** (Linux) - Simple animated GIF recorder
+
+### GIF Creation Guidelines
+1. **Duration**: Keep GIFs between 10-30 seconds
+2. **Size**: Optimize for web (under 5MB)
+3. **Resolution**: 1280x720 or 1920x1080
+4. **Frame Rate**: 10-15 FPS for smooth playback
+5. **File Naming**: Use descriptive names (e.g., `gate-checkin.gif`)
+
+### Adding GIFs to README
+```markdown
+![Description](docs/demo-gifs/your-gif-name.gif)
+*Caption explaining what the GIF demonstrates*
+```
+
+### GIF Optimization Tips
+- Use tools like **gifsicle** or **ImageOptim** to reduce file size
+- Consider using **WebP** format for better compression
+- Keep animations smooth but not too fast
+- Focus on key user interactions and flows
 
 ## 🆘 Support
 
