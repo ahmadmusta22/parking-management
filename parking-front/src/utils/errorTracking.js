@@ -326,90 +326,90 @@ export const userInteractionTracking = {
   }
 };
 
-// Debug utilities
-export const debugUtils = {
-  // Create debug panel
-  createDebugPanel: () => {
-    if (process.env.NODE_ENV === 'production') return;
-    
-    const panel = document.createElement('div');
-    panel.id = 'debug-panel';
-    panel.style.cssText = `
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      width: 300px;
-      max-height: 400px;
-      background: #000;
-      color: #fff;
-      padding: 10px;
-      font-family: monospace;
-      font-size: 12px;
-      z-index: 10000;
-      overflow-y: auto;
-      border-radius: 5px;
-      display: none;
-    `;
-    
-    const toggleButton = document.createElement('button');
-    toggleButton.textContent = 'Debug';
-    toggleButton.style.cssText = `
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 10001;
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 3px;
-      cursor: pointer;
-    `;
-    
-    toggleButton.addEventListener('click', () => {
-      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-    });
-    
-    document.body.appendChild(toggleButton);
-    document.body.appendChild(panel);
-    
-    return panel;
-  },
+// Debug utilities - DISABLED
+// export const debugUtils = {
+//   // Create debug panel
+//   createDebugPanel: () => {
+//     if (process.env.NODE_ENV === 'production') return;
+//     
+//     const panel = document.createElement('div');
+//     panel.id = 'debug-panel';
+//     panel.style.cssText = `
+//       position: fixed;
+//       top: 10px;
+//       right: 10px;
+//       width: 300px;
+//       max-height: 400px;
+//       background: #000;
+//       color: #fff;
+//       padding: 10px;
+//       font-family: monospace;
+//       font-size: 12px;
+//       z-index: 10000;
+//       overflow-y: auto;
+//       border-radius: 5px;
+//       display: none;
+//     `;
+//     
+//     const toggleButton = document.createElement('button');
+//     toggleButton.textContent = 'Debug';
+//     toggleButton.style.cssText = `
+//       position: fixed;
+//       top: 10px;
+//       right: 10px;
+//       z-index: 10001;
+//       background: #007bff;
+//       color: white;
+//       border: none;
+//       padding: 5px 10px;
+//       border-radius: 3px;
+//       cursor: pointer;
+//     `;
+//     
+//     toggleButton.addEventListener('click', () => {
+//       panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+//     });
+//     
+//     document.body.appendChild(toggleButton);
+//     document.body.appendChild(panel);
+//     
+//     return panel;
+//   },
 
-  // Update debug panel
-  updateDebugPanel: (panel) => {
-    if (!panel) return;
-    
-    const stats = errorTracker.getErrorStats();
-    const errors = errorTracker.getErrors().slice(-5);
-    
-    panel.innerHTML = `
-      <h4>Debug Panel</h4>
-      <div><strong>Session ID:</strong> ${errorTracker.sessionId}</div>
-      <div><strong>Total Errors:</strong> ${stats.total}</div>
-      <div><strong>Errors by Type:</strong> ${JSON.stringify(stats.byType)}</div>
-      <div><strong>Errors by Severity:</strong> ${JSON.stringify(stats.bySeverity)}</div>
-      <h5>Recent Errors:</h5>
-      ${errors.map(error => `
-        <div style="margin: 5px 0; padding: 5px; background: #333; border-radius: 3px;">
-          <div><strong>${error.type}</strong> - ${error.severity}</div>
-          <div>${error.message}</div>
-          <div style="font-size: 10px; color: #ccc;">${new Date(error.timestamp).toLocaleTimeString()}</div>
-        </div>
-      `).join('')}
-      <button id="clear-errors-btn" style="margin-top: 10px; padding: 5px;">Clear Errors</button>
-    `;
-    
-    // Add event listener for clear button
-    const clearBtn = panel.querySelector('#clear-errors-btn');
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        errorTracker.clearErrors();
-        debugUtils.updateDebugPanel(panel);
-      });
-    }
-  }
-};
+//   // Update debug panel
+//   updateDebugPanel: (panel) => {
+//     if (!panel) return;
+//     
+//     const stats = errorTracker.getErrorStats();
+//     const errors = errorTracker.getErrors().slice(-5);
+//     
+//     panel.innerHTML = `
+//       <h4>Debug Panel</h4>
+//       <div><strong>Session ID:</strong> ${errorTracker.sessionId}</div>
+//       <div><strong>Total Errors:</strong> ${stats.total}</div>
+//       <div><strong>Errors by Type:</strong> ${JSON.stringify(stats.byType)}</div>
+//       <div><strong>Errors by Severity:</strong> ${JSON.stringify(stats.bySeverity)}</div>
+//       <h5>Recent Errors:</h5>
+//       ${errors.map(error => `
+//         <div style="margin: 5px 0; padding: 5px; background: #333; border-radius: 3px;">
+//           <div><strong>${error.type}</strong> - ${error.severity}</div>
+//           <div>${error.message}</div>
+//           <div style="font-size: 10px; color: #ccc;">${new Date(error.timestamp).toLocaleTimeString()}</div>
+//         </div>
+//       `).join('')}
+//       <button id="clear-errors-btn" style="margin-top: 10px; padding: 5px;">Clear Errors</button>
+//     `;
+//     
+//     // Add event listener for clear button
+//     const clearBtn = panel.querySelector('#clear-errors-btn');
+//     if (clearBtn) {
+//       clearBtn.addEventListener('click', () => {
+//         errorTracker.clearErrors();
+//         debugUtils.updateDebugPanel(panel);
+//       });
+//     }
+//   }
+// };
 
 // Initialize error tracking
 export const initializeErrorTracking = () => {
@@ -425,10 +425,16 @@ export const initializeErrorTracking = () => {
   userInteractionTracking.trackFormSubmissions();
   userInteractionTracking.trackNavigation();
   
-  // Create debug panel in development
-  if (process.env.NODE_ENV !== 'production') {
-    const panel = debugUtils.createDebugPanel();
-    setInterval(() => debugUtils.updateDebugPanel(panel), 5000);
+  // Remove any existing debug panels
+  const existingDebugPanel = document.getElementById('debug-panel');
+  if (existingDebugPanel) {
+    existingDebugPanel.remove();
+  }
+  
+  // Remove any existing debug buttons
+  const existingDebugButton = document.querySelector('button[style*="position: fixed"][style*="top: 10px"][style*="right: 10px"]');
+  if (existingDebugButton && existingDebugButton.textContent === 'Debug') {
+    existingDebugButton.remove();
   }
   
   // console.log('Error tracking initialized');

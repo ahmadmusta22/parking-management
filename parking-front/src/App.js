@@ -44,6 +44,17 @@ function App() {
 
   // Initialize all advanced features
   useEffect(() => {
+    // Remove any existing debug elements first
+    const existingDebugPanel = document.getElementById('debug-panel');
+    if (existingDebugPanel) {
+      existingDebugPanel.remove();
+    }
+    
+    const existingDebugButton = document.querySelector('button[style*="position: fixed"][style*="top: 10px"][style*="right: 10px"]');
+    if (existingDebugButton && existingDebugButton.textContent === 'Debug') {
+      existingDebugButton.remove();
+    }
+    
     // Initialize core features
     initializePerformanceMonitoring();
     initializeAccessibility();

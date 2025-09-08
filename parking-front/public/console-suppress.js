@@ -72,4 +72,25 @@
       console[key] = originalConsole[key];
     });
   };
+  
+  // Remove any debug elements immediately
+  function removeDebugElements() {
+    // Remove debug panel
+    const debugPanel = document.getElementById('debug-panel');
+    if (debugPanel) {
+      debugPanel.remove();
+    }
+    
+    // Remove debug button
+    const debugButton = document.querySelector('button[style*="position: fixed"][style*="top: 10px"][style*="right: 10px"]');
+    if (debugButton && debugButton.textContent === 'Debug') {
+      debugButton.remove();
+    }
+  }
+  
+  // Run immediately and also on DOM ready
+  removeDebugElements();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeDebugElements);
+  }
 })();

@@ -37,6 +37,24 @@
   <!-- Console suppression - must load before any other JavaScript -->
   <script src="%PUBLIC_URL%/console-suppress.js"></script>
   
+  <!-- Debug cleanup - remove any existing debug elements -->
+  <script>
+    // Remove debug elements immediately on page load
+    (function() {
+      // Remove debug panel
+      const debugPanel = document.getElementById('debug-panel');
+      if (debugPanel) {
+        debugPanel.remove();
+      }
+      
+      // Remove debug button
+      const debugButton = document.querySelector('button[style*="position: fixed"][style*="top: 10px"][style*="right: 10px"]');
+      if (debugButton && debugButton.textContent === 'Debug') {
+        debugButton.remove();
+      }
+    })();
+  </script>
+  
   <!-- PWA Manifest -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   
