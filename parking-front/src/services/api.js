@@ -79,7 +79,10 @@ export const authAPI = {
 // Master data API
 export const masterAPI = {
   getGates: () => api.get('/master/gates'),
-  getZones: (gateId) => api.get(`/master/zones?gateId=${gateId}`),
+  getZones: (gateId) => {
+    const url = gateId ? `/master/zones?gateId=${gateId}` : '/master/zones';
+    return api.get(url);
+  },
   getCategories: () => api.get('/master/categories'),
 };
 
