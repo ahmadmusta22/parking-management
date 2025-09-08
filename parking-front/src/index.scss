@@ -2787,6 +2787,113 @@ body.offline-mode {
   }
 }
 
+/* Admin Modal Form Color Fixes */
+.modal {
+  .modal-content {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #e9ecef !important;
+    border-radius: 12px 12px 0 0;
+    
+    .modal-title {
+      color: #333333 !important;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    
+    .btn-close {
+      filter: none !important;
+      opacity: 0.7;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .modal-body {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    padding: 25px;
+    
+    .form-label {
+      color: #333333 !important;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .form-control {
+      background-color: #ffffff !important;
+      color: #333333 !important;
+      border: 2px solid #e9ecef !important;
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        border-color: #E8092E !important;
+        box-shadow: 0 0 0 0.2rem rgba(232, 9, 46, 0.25) !important;
+        outline: none;
+      }
+      
+      &::placeholder {
+        color: #6c757d !important;
+      }
+    }
+  }
+  
+  .modal-footer {
+    background-color: #f8f9fa !important;
+    border-top: 1px solid #e9ecef !important;
+    border-radius: 0 0 12px 12px;
+    padding: 20px 25px;
+    
+    .btn {
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      
+      &.btn-primary {
+        background: linear-gradient(135deg, #E8092E 0%, #c40826 100%) !important;
+        border: none !important;
+        color: #ffffff !important;
+        
+        &:hover {
+          background: linear-gradient(135deg, #c40826 0%, #a0071f 100%) !important;
+          transform: translateY(-1px);
+        }
+        
+        &:disabled {
+          background: #6c757d !important;
+          opacity: 0.6;
+        }
+      }
+      
+      &.btn-secondary {
+        background: #6c757d !important;
+        border: none !important;
+        color: #ffffff !important;
+        
+        &:hover {
+          background: #5a6268 !important;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
 /* Footer Content Centering Fix */
 .footer-wrapper {
   .widget-area {
@@ -2836,6 +2943,40 @@ body.offline-mode {
 }
 
 @media (max-width: 768px) {
+  /* Mobile Modal Fixes */
+  .modal {
+    .modal-content {
+      border-radius: 0 !important;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .modal-header {
+      border-radius: 0 !important;
+      padding: 20px;
+    }
+    
+    .modal-body {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .modal-footer {
+      border-radius: 0 !important;
+      padding: 20px;
+      flex-direction: column;
+      gap: 10px;
+      
+      .btn {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 16px;
+      }
+    }
+  }
+  
   .footer-wrapper {
     .widget-area {
       .widget {
