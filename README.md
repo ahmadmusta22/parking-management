@@ -67,9 +67,6 @@ A comprehensive, production-ready parking reservation system built with React, N
 ![Gate Check-in](docs/screenshots/gate-checkin.png)
 *Visitor and subscriber check-in interface*
 
-![Gate Status](docs/screenshots/gate-status.png)
-*Real-time zone availability and status*
-
 ### 🏢 Employee Checkpoint
 ![Checkpoint Login](docs/screenshots/checkpoint-login.png)
 *Employee authentication and access*
@@ -366,7 +363,6 @@ Save screenshots as:
 docs/screenshots/
 ├── homepage.png
 ├── gate-checkin.png
-├── gate-status.png
 ├── checkpoint-login.png
 ├── checkpoint-process.png
 ├── admin-login.png
