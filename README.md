@@ -84,15 +84,9 @@ A comprehensive, production-ready parking reservation system built with React, N
 ![Admin Reports](docs/screenshots/admin-reports.png)
 *Real-time parking reports and analytics*
 
-![Admin Zone Management](docs/screenshots/admin-zones.png)
-*Zone management and rate configuration*
-
 ### 🎫 Ticket System
 ![Ticket Generation](docs/screenshots/ticket-generation.png)
 *Professional ticket creation and printing*
-
-![Ticket Details](docs/screenshots/ticket-details.png)
-*Detailed ticket information and QR codes*
 
 ### 📱 Mobile Responsive Design
 ![Mobile Homepage](docs/screenshots/mobile-homepage.png)
@@ -349,7 +343,6 @@ Take screenshots of these key pages:
 - [ ] Admin login page
 - [ ] Main dashboard overview
 - [ ] Reports section
-- [ ] Zone management interface
 - [ ] Rate configuration modal
 
 #### 📱 Mobile Views
@@ -368,9 +361,7 @@ docs/screenshots/
 ├── admin-login.png
 ├── admin-dashboard.png
 ├── admin-reports.png
-├── admin-zones.png
 ├── ticket-generation.png
-├── ticket-details.png
 ├── mobile-homepage.png
 ├── mobile-gate.png
 └── mobile-admin.png
