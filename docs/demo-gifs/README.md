@@ -1,66 +1,74 @@
-# Demo GIFs Directory
+# Demo Media Directory
 
-This directory contains demonstration GIFs for the parking management system.
+This directory contains demonstration media for the parking management system.
 
-## GIF Files to Create
+## Screenshot Files to Create
 
-### Core System Demonstrations
-- `system-overview.gif` - Complete system walkthrough
-- `gate-checkin.gif` - Gate check-in process
-- `checkpoint-process.gif` - Employee checkpoint operations
-- `admin-dashboard.gif` - Admin panel functionality
-- `realtime-updates.gif` - WebSocket real-time updates
-- `mobile-responsive.gif` - Mobile interface demonstration
-- `ticket-printing.gif` - Ticket generation and printing
+### Core System Screenshots
+- `homepage.png` - Homepage hero section
+- `gate-checkin.png` - Gate check-in interface
+- `gate-status.png` - Zone availability display
+- `checkpoint-login.png` - Employee login page
+- `checkpoint-process.png` - Checkout processing
+- `admin-login.png` - Admin authentication
+- `admin-dashboard.png` - Main admin panel
+- `admin-reports.png` - Reports section
+- `admin-zones.png` - Zone management
+- `ticket-generation.png` - Ticket creation
+- `ticket-details.png` - Ticket information
+- `mobile-homepage.png` - Mobile homepage
+- `mobile-gate.png` - Mobile gate interface
+- `mobile-admin.png` - Mobile admin panel
 
-### Additional Demonstrations
-- `gate-animations.gif` - Gate opening/closing animations
-- `payment-flow.gif` - Payment processing flow
-- `admin-reports.gif` - Admin reporting features
-- `error-handling.gif` - Error scenarios and recovery
-- `accessibility-features.gif` - Accessibility features demonstration
+## Screenshot Creation Workflow
 
-## GIF Creation Workflow
-
-1. **Record the screen** using your preferred tool
-2. **Edit and optimize** the GIF for web
-3. **Save with descriptive name** in this directory
-4. **Update README.md** with the new GIF reference
-5. **Test the GIF** displays correctly in GitHub
+1. **Start your system** (both frontend and backend)
+2. **Navigate to each page** systematically
+3. **Take clean screenshots** using built-in tools
+4. **Save with descriptive names** in docs/screenshots/
+5. **Update README.md** references
+6. **Test display** on GitHub
 
 ## File Naming Convention
 
 Use kebab-case with descriptive names:
-- `gate-checkin-visitor.gif`
-- `admin-zone-management.gif`
-- `checkpoint-payment-processing.gif`
+- `homepage.png`
+- `gate-checkin.png`
+- `admin-dashboard.png`
+- `mobile-homepage.png`
 
-## Size Guidelines
+## Screenshot Guidelines
 
-- **Maximum file size**: 5MB
-- **Recommended resolution**: 1280x720
-- **Duration**: 10-30 seconds
-- **Frame rate**: 10-15 FPS
+- **Resolution**: 1920x1080 or higher
+- **Format**: PNG for best quality
+- **Browser**: Clean browser with no extensions
+- **Zoom**: Consistent 100% zoom level
+- **Content**: Show key features clearly
 
-## Tools for GIF Creation
+## Tools for Screenshots
 
-### Windows
-- **ScreenToGif** (Recommended)
-- **LICEcap**
-- **Camtasia**
+### Built-in Tools
+- **Windows**: `Windows + Shift + S` (Snipping Tool)
+- **Mac**: `Cmd + Shift + 4` (Screenshot tool)
+- **Browser**: Right-click → "Inspect" → Device toolbar
 
-### Mac
-- **Kap**
-- **LICEcap**
-- **QuickTime + GIF conversion**
+### Third-party Tools
+- **Lightshot** - Advanced screenshot tool
+- **Greenshot** - Open source screenshot tool
+- **Snagit** - Professional screenshot software
 
-### Linux
-- **Peek**
-- **LICEcap**
-- **SimpleScreenRecorder**
+## Mobile Screenshots
 
-## Optimization Tools
+For mobile screenshots:
+1. **Open browser developer tools** (F12)
+2. **Click device toolbar** icon
+3. **Select mobile device** (iPhone, iPad, etc.)
+4. **Take screenshot** of mobile view
+5. **Save with "mobile-" prefix**
 
-- **gifsicle** - Command-line GIF optimization
-- **ImageOptim** - GUI optimization tool
-- **TinyPNG** - Online compression service
+## Optimization Tips
+
+- **Compress images** if file sizes are large
+- **Use PNG** for screenshots with text
+- **Ensure readability** of all text elements
+- **Keep consistent styling** across all screenshots

@@ -57,35 +57,55 @@ A comprehensive, production-ready parking reservation system built with React, N
 - **jest-axe** - Accessibility testing
 - **User Event** - User interaction testing
 
-## 🎬 Demo & Screenshots
+## 📸 Screenshots & Demo
 
-### 📱 System Overview
-![System Overview](docs/demo-gifs/system-overview.gif)
-*Complete parking system demonstration*
+### 🏠 Homepage & Navigation
+![Homepage](docs/screenshots/homepage.png)
+*Modern homepage with hero section and navigation*
 
 ### 🚪 Gate Operations
-![Gate Check-in](docs/demo-gifs/gate-checkin.gif)
-*Visitor and subscriber check-in process*
+![Gate Check-in](docs/screenshots/gate-checkin.png)
+*Visitor and subscriber check-in interface*
+
+![Gate Status](docs/screenshots/gate-status.png)
+*Real-time zone availability and status*
 
 ### 🏢 Employee Checkpoint
-![Checkpoint Process](docs/demo-gifs/checkpoint-process.gif)
-*Employee checkout and payment processing*
+![Checkpoint Login](docs/screenshots/checkpoint-login.png)
+*Employee authentication and access*
+
+![Checkpoint Process](docs/screenshots/checkpoint-process.png)
+*Ticket lookup and payment processing*
 
 ### 👨‍💼 Admin Dashboard
-![Admin Dashboard](docs/demo-gifs/admin-dashboard.gif)
-*Administrative controls and real-time monitoring*
+![Admin Login](docs/screenshots/admin-login.png)
+*Secure admin authentication*
 
-### 🔄 Real-time Updates
-![Real-time Updates](docs/demo-gifs/realtime-updates.gif)
-*Live WebSocket updates across all clients*
+![Admin Dashboard](docs/screenshots/admin-dashboard.png)
+*Comprehensive administrative controls*
 
-### 📱 Mobile Responsive
-![Mobile Experience](docs/demo-gifs/mobile-responsive.gif)
-*Mobile-optimized interface*
+![Admin Reports](docs/screenshots/admin-reports.png)
+*Real-time parking reports and analytics*
 
-### 🎫 Ticket Generation
-![Ticket Printing](docs/demo-gifs/ticket-printing.gif)
-*Professional ticket generation and printing*
+![Admin Zone Management](docs/screenshots/admin-zones.png)
+*Zone management and rate configuration*
+
+### 🎫 Ticket System
+![Ticket Generation](docs/screenshots/ticket-generation.png)
+*Professional ticket creation and printing*
+
+![Ticket Details](docs/screenshots/ticket-details.png)
+*Detailed ticket information and QR codes*
+
+### 📱 Mobile Responsive Design
+![Mobile Homepage](docs/screenshots/mobile-homepage.png)
+*Mobile-optimized homepage*
+
+![Mobile Gate](docs/screenshots/mobile-gate.png)
+*Touch-friendly gate interface*
+
+![Mobile Admin](docs/screenshots/mobile-admin.png)
+*Responsive admin panel*
 
 ## 🚀 Quick Start
 
@@ -303,32 +323,69 @@ parking-reservations-system/
 
 This project is licensed under the MIT License.
 
-## 📸 Creating Demo GIFs
+## 📸 Taking Screenshots
 
-### Recommended GIF Creation Tools
-- **ScreenToGif** (Windows) - Free, lightweight screen recorder
-- **LICEcap** (Cross-platform) - Simple screen capture tool
-- **Kap** (Mac) - Modern screen recorder
-- **Peek** (Linux) - Simple animated GIF recorder
+### Quick Screenshot Guide
+1. **Windows**: `Windows + Shift + S` (Snipping Tool)
+2. **Mac**: `Cmd + Shift + 4` (Screenshot tool)
+3. **Browser**: Right-click → "Inspect" → Device toolbar for mobile screenshots
 
-### GIF Creation Guidelines
-1. **Duration**: Keep GIFs between 10-30 seconds
-2. **Size**: Optimize for web (under 5MB)
-3. **Resolution**: 1280x720 or 1920x1080
-4. **Frame Rate**: 10-15 FPS for smooth playback
-5. **File Naming**: Use descriptive names (e.g., `gate-checkin.gif`)
+### Screenshot Checklist
+Take screenshots of these key pages:
 
-### Adding GIFs to README
-```markdown
-![Description](docs/demo-gifs/your-gif-name.gif)
-*Caption explaining what the GIF demonstrates*
+#### 🏠 Homepage & Navigation
+- [ ] Homepage hero section
+- [ ] Navigation menu
+- [ ] Footer section
+
+#### 🚪 Gate Operations  
+- [ ] Gate 1 check-in page
+- [ ] Zone selection interface
+- [ ] Ticket generation modal
+
+#### 🏢 Employee Checkpoint
+- [ ] Checkpoint login page
+- [ ] Ticket lookup interface
+- [ ] Payment processing screen
+
+#### 👨‍💼 Admin Dashboard
+- [ ] Admin login page
+- [ ] Main dashboard overview
+- [ ] Reports section
+- [ ] Zone management interface
+- [ ] Rate configuration modal
+
+#### 📱 Mobile Views
+- [ ] Mobile homepage
+- [ ] Mobile gate interface
+- [ ] Mobile admin panel
+
+### File Naming Convention
+Save screenshots as:
+```
+docs/screenshots/
+├── homepage.png
+├── gate-checkin.png
+├── gate-status.png
+├── checkpoint-login.png
+├── checkpoint-process.png
+├── admin-login.png
+├── admin-dashboard.png
+├── admin-reports.png
+├── admin-zones.png
+├── ticket-generation.png
+├── ticket-details.png
+├── mobile-homepage.png
+├── mobile-gate.png
+└── mobile-admin.png
 ```
 
-### GIF Optimization Tips
-- Use tools like **gifsicle** or **ImageOptim** to reduce file size
-- Consider using **WebP** format for better compression
-- Keep animations smooth but not too fast
-- Focus on key user interactions and flows
+### Screenshot Tips
+- **Use high resolution** (1920x1080 or higher)
+- **Clean browser** with no extensions visible
+- **Consistent browser zoom** (100%)
+- **Good contrast** and readable text
+- **PNG format** for best quality
 
 ## 🆘 Support
 
