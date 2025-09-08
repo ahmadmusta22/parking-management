@@ -211,4 +211,4 @@ This parking reservation system successfully demonstrates:
 
 ---
 
-**Built with ❤️ using React, Node.js, and modern web technologies**
+
